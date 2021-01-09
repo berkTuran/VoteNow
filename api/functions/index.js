@@ -3,9 +3,19 @@
 const functions = require('firebase-functions');
 const cors = require('cors')({origin: true});
 const admin = require('firebase-admin');
-
-admin.initializeApp();
-
+const { auth } = require('firebase-admin');
+const FirebaseAuth = require('firebase');
+var firebaseConfig = {
+    apiKey: "AIzaSyC8iVJRnPaTbAQb51nkMrDzx8G2iP5-ln8",
+    authDomain: "votenow-e5dc8.firebaseapp.com",
+    projectId: "votenow-e5dc8",
+    storageBucket: "votenow-e5dc8.appspot.com",
+    messagingSenderId: "564993989783",
+    appId: "1:564993989783:web:90ed60e1ea7fdbddbcddd2",
+    measurementId: "G-S42QHJLE3Q"
+  };
+admin.initializeApp(firebaseConfig);
+FirebaseAuth.default.initializeApp(firebaseConfig);
 exports.createElection = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
     const election = req.body;
@@ -16,7 +26,7 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
     admin.firestore().collection('elections').doc().set(election).then(res => {
         res.json({result: res, error: null});
     }).catch(err => {
-        res.json({result: null, error: err});
+        res.json({error: err});
     });
     });
   });
@@ -33,15 +43,21 @@ exports.getAllElections = functions.https.onRequest(async (req, res) => {
             });
             res.json({result: elections, error: null});
         }).catch(error => {
-            res.json({result: null, error: error});
+            res.json({error: error});
         });
     });
   });
 
 exports.getElection = functions.https.onRequest(async (req, res) => {
+    const electionId = req.body.electionId;
+    admin.firestore().collection('elections').doc(electionId).get().then(snapshot => {
+        res.json({response: {id: snapshot.id, data: snapshot.data()}});
+    }).catch(error => {
+        res.json({error: error});
+    });
+}); 
 
-}) 
-
+// It registers an user in the system.
 exports.signUp = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {3    
     const user = req.body;
@@ -56,35 +72,35 @@ exports.signUp = functions.https.onRequest(async (req, res) => {
         let userJSON = {
             firstName: user.firstName,
             lastName: user.lastName,
-            email: registeredUser.email,
-            isDisabled: registeredUser.disabled,
-            createdAt: new Date()
+            email: user.email,
+            createdAt: new Date(),
+            birthDate: user.birthDate,
+            gender: user.gender
         }
         admin.firestore().collection('users').doc(registeredUser.uid).set(userJSON).then(res => {
             res.json({success: res, error: null});
         }).catch(err => {
             console.log(err)
-            res.json({result: null, error: err});
+            res.json({error: err});
         });
     })
     .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
-        res.json({result: null, error: {code: errorCode, message: errorMessage}});
+        console.log(error)
+        res.json({error: {code: errorCode, message: errorMessage}});
     });
     })
   });
 
-  exports.forgotPassword = functions.https.onRequest(async (req, res) => {
-    cors(req, res, () => {
-        admin.auth().generatePasswordResetLink(req.body.email).then(generatedMail => {
-            sendEmail(req.body.email,generatedMail).then(res => {
-                res.json({success: true, error: null});
-            }).catch(err => {
-                res.json({result: null, error: err});
-            })
-        }).catch(err => {
-            res.json({result: null, error: err});
-        })
-    })
+  exports.signIn = functions.https.onRequest(async (req, res) => {
+      let authTokens = {
+          email: req.body.email,
+          password: req.body.password
+      }
+    FirebaseAuth.default.auth().signInWithEmailAndPassword(authTokens.email, authTokens.password).then(response => {
+        res.json({result: response, error: null});
+    }).catch(error => {
+        res.json(error);
+    });
   });
