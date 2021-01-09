@@ -50,3 +50,4 @@ $saveToCSV                  = "email_form.csv";
 include('lib/mail_sender.php');
 
 ?>
+//addslashes
