@@ -1,0 +1,46 @@
+.modal {
+    display: none; /* Varsayılan olarak gizlidir */
+    position: fixed; /* Yerinde kal */
+    z-index: 1; /* Üstte */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ful Genişlik */
+    height: 100%; /* Ful Yükseklik */
+    overflow: auto; /* Gerekirse kaydırmayı etkinleştir */
+    background-color: rgb(0,0,0); /* Yedek renk */
+    background-color: rgba(0,0,0,0.4); /* Siyah w / opaklık */
+}
+/* İçerik / Kutu */
+.modal-header {
+    padding: 2px 16px;
+    
+    color: black;
+  }
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* % 15 üstten ve ortalanmış */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ekran boyutuna bağlı olarak daha fazla veya daha az olabilir */
+    align-items: center;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: black;
+  }
+
+/* Kapat Düğmesi */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
