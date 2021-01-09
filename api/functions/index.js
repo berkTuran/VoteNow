@@ -3,8 +3,8 @@
 const functions = require('firebase-functions');
 const cors = require('cors')({origin: true});
 const admin = require('firebase-admin');
-const { auth } = require('firebase-admin');
 const FirebaseAuth = require('firebase');
+
 var firebaseConfig = {
     apiKey: "AIzaSyC8iVJRnPaTbAQb51nkMrDzx8G2iP5-ln8",
     authDomain: "votenow-e5dc8.firebaseapp.com",
@@ -16,6 +16,7 @@ var firebaseConfig = {
   };
 admin.initializeApp(firebaseConfig);
 FirebaseAuth.default.initializeApp(firebaseConfig);
+
 exports.createElection = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
     const election = req.body;
@@ -59,7 +60,7 @@ exports.getElection = functions.https.onRequest(async (req, res) => {
 
 // It registers an user in the system.
 exports.signUp = functions.https.onRequest(async (req, res) => {
-    cors(req, res, () => {3    
+    cors(req, res, () => {   
     const user = req.body;
     user['createdAt'] = new Date();
     user['updatedAt'] = new Date();
@@ -94,6 +95,10 @@ exports.signUp = functions.https.onRequest(async (req, res) => {
   });
 
   exports.signIn = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        res.header('Access-Control-Allow-Origin', "*");     // TODO - Make this more secure!!
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+        res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
       let authTokens = {
           email: req.body.email,
           password: req.body.password
@@ -102,5 +107,6 @@ exports.signUp = functions.https.onRequest(async (req, res) => {
         res.json({result: response, error: null});
     }).catch(error => {
         res.json(error);
+    });
     });
   });
