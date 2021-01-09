@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $("#submit-button").click(async(e) => {
+    $("#submit-button").click(async() => {
         let model = {};
         model.email = $("input#email").val();
         model.password = $("input#password").val();
@@ -12,7 +12,6 @@ $(document).ready(() => {
         if (!!result.error.message) {
             alert(result.error.message);
         } else {
-            alert("Register successful");
             location.href = "/index.html";
         }
     });
