@@ -15,8 +15,7 @@
         <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
         <link href="css/modal.css" rel="stylesheet" type="text/css" media="all" />
-
-
+    
 
 
     </head>
@@ -77,23 +76,30 @@
                     <h2>
                     <div class="col-md-10">
                         
-                     <label>Start Date</label>
-                    <input type="date" id="startDate" value="2014-02-09">
-                    <label>End Date</label>
-                    <input type="date" id="endDate" value="2014-02-09">
-                </div></h2>
-                </div>
+                     <table width="68%" border="0" align="center" cellpadding="0" cellspacing="6">
+
+          <tr>
+            <td align="left" valign="middle" class="search-filter-headings">Start Date:</td>
+            <td align="left" valign="middle">
+            <input type="text" name="start_date" id="start_date" class="filter-textfields" placeholder="Start Date"/>
+            </td>
+          </tr>
+         
+
+          <tr>
+            <td align="left" valign="middle" class="search-filter-headings">End Date:</td>
+            <td align="left" valign="middle">
+            <input type="text" name="end_date" id="end_date" class="filter-textfields" placeholder="End Date"/>
+            </td>
+          </tr>
+       
+        </table>
                 
                 
             </div>
         </div>
 
-<script>
-function myFunction() {
-  var x = document.getElementById("myDate").value;
-  document.getElementById("demo").innerHTML = x;
-}
-</script>
+
 
        
 

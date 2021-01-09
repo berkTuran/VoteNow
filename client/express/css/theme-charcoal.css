@@ -9375,3 +9375,10 @@ footer.footer-7 {
     margin-right: auto;
   }
 }
+input:not([class*='col-']),
+select:not([class*='col-']),
+.input-select:not([class*='col-']),
+textarea:not([class*='col-']),
+button[type="button"]:not([class*='col-']) {
+    width: 100%;
+}
