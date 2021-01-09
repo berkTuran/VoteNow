@@ -7,7 +7,7 @@ $(document).ready(() => {
         model.password = $("input#password").val();
         model.validPassword = $("input#valid-password").val();
         model.birthDate = $("input#birthDate").val();
-        model.gender = $("input#Gender").val();
+        model.gender = $("input[name='frequency']:checked").val();
 
 
         if (model.fullName === "" || model.email === "" || model.password === "" || model.validPassword === "") {
@@ -21,7 +21,7 @@ $(document).ready(() => {
         if (!!result.error.message) {
             alert(result.error.message);
         } else {
-            alert("Success");
+            alert("Register successful");
             location.href = "/main.html";
         }
     });

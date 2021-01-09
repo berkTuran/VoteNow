@@ -1,29 +1,31 @@
-$( "#start_date" ).datepicker(
-	
-    { 
-        maxDate: '0', 
-        beforeShow : function()
-        {
-            jQuery( this ).datepicker({  maxDate: 0 });
-        },
-        altFormat: "dd/mm/yy", 
-        dateFormat: 'dd/mm/yy'
-        
-    }
-    
-);
+$(document).ready(() => {
+    var dateFormat = "mm/dd/yy",
+        from = $("#start")
+        .datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1
+        })
+        .on("change", function() {
+            to.datepicker("option", "minDate", getDate(this));
+        }),
+        to = $("#end").datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1
+        })
+        .on("change", function() {
+            from.datepicker("option", "maxDate", getDate(this));
+        });
 
-$( "#end_date" ).datepicker( 
+    function getDate(element) {
+        var date;
+        try {
+            date = $.datepicker.parseDate(dateFormat, element.value);
+        } catch (error) {
+            date = null;
+        }
 
-    {
-        maxDate: '0', 
-        beforeShow : function()
-        {
-            jQuery( this ).datepicker('option','minDate', jQuery('#start_date').val() );
-        } , 
-        altFormat: "dd/mm/yy", 
-        dateFormat: 'dd/mm/yy'
-        
+        return date;
     }
-    
-);
+});
