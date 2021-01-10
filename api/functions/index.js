@@ -24,11 +24,44 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
     election['createdAt'] = new Date();
     election['updatedAt'] = new Date();
     election['result'] = null;
+    election['isOpen'] = true;
     admin.firestore().collection('elections').doc().set(election).then(res => {
         res.json({result: res, error: null});
     }).catch(err => {
         res.json({error: err});
     });
+    });
+});
+
+exports.createSurvey = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+    const survey = req.body;
+    survey['createdAt'] = new Date();
+    survey['updatedAt'] = new Date();
+    survey['result'] = null;
+    survey['isOpen'] = true;
+    admin.firestore().collection('surveys').doc().set(survey).then(res => {
+        res.json({result: res, error: null});
+    }).catch(err => {
+        res.json({error: err});
+    });
+    });
+});
+
+exports.getAllSurveys = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        admin.firestore().collection('surveys').get().then(snapshot => {
+            var surveys = [];
+            snapshot.forEach(e => {
+                surveys.push({
+                    id: e.id,
+                    data: e.data()
+                });
+            });
+            res.json({result: survey, error: null});
+        }).catch(error => {
+            res.json({error: error});
+        });
     });
 });
 
@@ -58,6 +91,15 @@ exports.getElection = functions.https.onRequest(async (req, res) => {
     });
 });
 
+exports.getSurvey = functions.https.onRequest(async (req, res) => {
+    const surveyId = req.body.surveyId;
+    admin.firestore().collection('surveys').doc(surveyId).get().then(snapshot => {
+        res.json({response: {id: snapshot.id, data: snapshot.data()}});
+    }).catch(error => {
+        res.json({error: error});
+    });
+});
+
 exports.deleteElection = functions.https.onRequest(async (req, res) => {
     const electionId = req.body.electionId;
     admin.firestore().collection('elections').doc(electionId).delete().then(res => {
@@ -67,9 +109,27 @@ exports.deleteElection = functions.https.onRequest(async (req, res) => {
     });
 });
 
+exports.deleteSurvey = functions.https.onRequest(async (req, res) => {
+    const surveyId = req.body.surveyId;
+    admin.firestore().collection('surveys').doc(surveyId).delete().then(res => {
+        res.json({response: res});
+    }).catch(error => {
+        res.json({error: error});
+    });
+});
+
 exports.updateElection = functions.https.onRequest(async (req, res) => {
     const electionId = req.body.electionId;
     admin.firestore().collection('elections').doc(electionId).update(req.body.election).then(res => {
+        res.json({response: res});
+    }).catch(error => {
+        res.json({error: error});
+    });
+});
+
+exports.updateSurvey = functions.https.onRequest(async (req, res) => {
+    const surveyId = req.body.surveyId;
+    admin.firestore().collection('surveys').doc(surveyId).update(req.body.survey).then(res => {
         res.json({response: res});
     }).catch(error => {
         res.json({error: error});
