@@ -1,4 +1,8 @@
 $(document).ready(() => {
+    if (localStorage.getItem("id") != null) {
+        location.href = "/index.html";
+    }
+
     $("#submit-button").click(async() => {
         let model = {};
         model.firstName = $("input#firstName").val();
