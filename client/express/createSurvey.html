@@ -16,8 +16,9 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
         <link href="css/modal.css" rel="stylesheet" type="text/css" media="all" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
-
-
+        
+        
+         
     </head>
 
     <body data-smooth-scroll-offset="77">
@@ -65,148 +66,61 @@
         </div>
 
         <section class="text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-lg-8">
+            
+            <div class="container" >
+                
+                <div class="col-md-5">
+
+                
+                    
+                    <form id="survey-form">
+                        <h3><b>Survey Name</b></h3>
                         <br>
-                        <h2>
-                            <div class="col-md-10"> <label>Election Name</label> <input id="elecName" input type="text" name="Election Name" class="validate-required" required autocomplete="off"> </div>
-                        </h2>
+                        
+                         <input id="surveyName" input type="text" name="Survey Name" class="validate-required" required autocomplete="off" placeholder="Survey Name"> 
+                         <h3><b>Survey Description</b></h3> 
                         <br>
-                        <p class="lead">
-                            <h2>
-                                <div class="col-md-10"> <label>Election Description</label> <textarea rows="6" id="elecDesc" name="election-description" class="validate-required" required autocomplete="off"></textarea> </div>
-                            </h2>
-                        </p>
+                        <textarea rows="4" id="surveyDesc" name="survey-description" class="validate-required" required autocomplete="off" placeholder="Survey Description"></textarea> 
+                        <h3><b>Answer</b></h3>
                         <br>
-                        <h2>
-                            
-                            <!-- <div class="col-md-10">
-
-                                <table width="68%" border="0" align="center" cellpadding="0" cellspacing="6">
-
-                                    <tr>
-                                        <td align="left" valign="middle" class="search-filter-headings">Start Date:</td>
-                                        <td align="left" valign="middle">
-                                            <input type="text" name="start_date" id="start_date" class="filter-textfields" placeholder="Start Date" />
-                                        </td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td align="left" valign="middle" class="search-filter-headings">End Date:</td>
-                                        <td align="left" valign="middle">
-                                            <input type="text" name="end_date" id="end_date" class="filter-textfields" placeholder="End Date" />
-                                        </td>
-                                    </tr>
-
-                                </table>
-
-
-                            </div> -->
-
-                            <div>
-                                <input type="text" name="start" id="start" />
-                                <label for="start">Start Date</label>
-                            </div>
-                            <div>
-                                <input type="text" name="end" id="end" />
-                                <label for="end">Explation Date</label>
-                            </div>
-                    </div>
-
-
-
-
-
-
-                    <button id="myBtn">Open Modal</button>
-                    <div id="myModal" class="modal">
-
-
-
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <span class="close">&times;</span>
-                                <br>
-                                <h1>Add Candidate</h1>
-                                <br>
-                                <br>
-
-                            </div>
-                            <div class="col-md-8 col-lg-7">
-
-                                <form class="text-left form-email row mx-0" id="add-candidate" method="POST">
-                                    <div class="col-md-6"> <label>Candidate Name:</label> <input type="text" id="candName" name="Candidate Name" class="validate-required" required autocomplete="off"> </div>
-                                    <div class="col-md-6"> <label>Choose a photo:</label> <input type="file" id="candPhoto" name="candidate-photo"> </div>
-                                    <div class="col-md-12"> <label>Description:</label> <textarea rows="6" id="candDesc" name="candidate-description" class="validate-required" required autocomplete="off"></textarea> </div>
-
-                                    <div class="col-md-5 col-lg-4"> <button type="createCandidate" class="btn btn--primary type--uppercase">CREATE CANDIDATE</button> </div>
-
-                                </form>
-                                <br>
-                            </div>
-                        </div>
-
-                    </div>
-
-        </section>
-        <section>
-            <div class="container">
-                <div class="masonry">
-                    <div class="masonry__container row masonry--active">
-                        <div class="col-md-4 masonry__item">
-                            <div class="card card-2 text-center">
-                                <div class="card__top">
-                                    <a href="#"> <img alt="Image" src="img/landing-8.jpg"> </a>
-                                </div>
-                                <div class="card__body">
-                                    <h4>Candidate1</h4> <span class="type--fade">Music&amp;Hobbies</span>
-                                    <p>Select Candidate1.</p>
-                                </div>
-                                <div class="card__bottom text-center">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 masonry__item">
-                            <div class="card card-2 text-center">
-                                <div class="card__top">
-                                    <a href="#"> <img alt="Image" src="img/landing-8.jpg"> </a>
-                                </div>
-                                <div class="card__body">
-                                    <h4>Candidate2</h4> <span class="type--fade">Music&amp;Hobbies</span>
-                                    <p>Select Candidate2.</p>
-                                </div>
-                                <div class="card__bottom text-center">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 masonry__item">
-                            <div class="card card-2 text-center">
-                                <div class="card__top">
-                                    <a href="#"> <img alt="Image" src="img/landing-8.jpg"> </a>
-                                </div>
-                                <div class="card__body">
-                                    <h4>Candidate3</h4> <span class="type--fade">Music&amp;Hobbies</span>
-                                    <p>Select Candidate3.</p>
-                                </div>
-                                <div class="card__bottom text-center">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <a class="btn" href="#" id="createElectionBtn">
-                            <span class="btn__text">Create Election</span>
+                        <input type="text" id="name" placeholder="Enter an answer" autocomplete="off">
+            
+                        <button id="btnAdd" class="btn btn--primary">Add Answer</button>
+                        <br>
+                        <br>
+            
+                        <h3><b>Answer List:</b></h3>
+                        <select id="list" name="list" multiple>
+                        </select>
+                        <button id="btnRemove" class="btn btn--primary">Remove Selected Answer</button>
+                        <br>
+                        <br>
+                        <h3><b>Start Date</b></h3>
+                        <input type="text" name="startDate" id="startS"/>
+                        <br>
+                        <br>
+                        <h3><b>End Date</b></h3>
+                        <input type="text" name="endDate" id="endS"/>
+                        <br>
+                        <br>
+                        <br>
+                        <a class="btn" href="#" id="createSurveyBtn">
+                            <span class="btn__text">Create Survey</span>
                         </a>
-                    </div>
-                </div>
+                    </form>
+                     
+                 </div>
+            
             </div>
-            </div>
-        </section>
+           
+        
+             </section>
+
+                
+
+        
+        
+       
 
         </div>
         <footer class="text-center-xs space--xs">
@@ -240,28 +154,11 @@
         <script src="js/parallax.js"></script>
         <script src="js/smooth-scroll.min.js"></script>
         <script src="js/scripts.js"></script>
-        <script src="js/core/createElection.js"></script>
-        <script>
-            var modal = document.getElementById('myModal');
-            // Kipi açan düğmeyi al
-            var btn = document.getElementById("myBtn");
-            // Kipi kapatan <span> öğesini edinin
-            var span = document.getElementsByClassName("close")[0];
-            // Kullanıcı düğmeyi tıklattığında
-            btn.onclick = function() {
-                    modal.style.display = "block";
-                }
-                // Kullanıcı <span> (x) düğmesini tıkladığında, popup
-            span.onclick = function() {
-                    modal.style.display = "none";
-                }
-                // Kullanıcı modelden başka herhangi bir yeri tıklattıysa, onu kapatın.
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        </script>
+        <script src="js/question.js"></script>
+        <script src="js/createSurvey.js"></script>
+        
+       
+        
     </body>
 
 
