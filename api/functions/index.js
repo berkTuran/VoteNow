@@ -14,6 +14,7 @@ var firebaseConfig = {
     appId: "1:564993989783:web:90ed60e1ea7fdbddbcddd2",
     measurementId: "G-S42QHJLE3Q"
   };
+
 admin.initializeApp(firebaseConfig);
 FirebaseAuth.default.initializeApp(firebaseConfig);
 
@@ -56,7 +57,25 @@ exports.getElection = functions.https.onRequest(async (req, res) => {
     }).catch(error => {
         res.json({error: error});
     });
-}); 
+});
+
+exports.addCandidate = async (req, res) => {
+    cors(req, res, () => {
+        const electionParameters = {
+            electionId: req.body.electionId,
+            candidate: {
+                candidateName: req.body.candidateName,
+                bio: req.body.bio,
+                profileImageUrl: req.body.profileImageUrl
+            }
+        }
+        admin.firestore().collection('elections').doc(electionParameters.electionId).collection('candidates').add(electionParameters.candidate).then(response => {
+            res.json({result: response, error: null});
+        }).catch(error => {
+            res.json({error: error});
+        });
+    });
+};
 
 // It registers an user in the system.
 exports.signUp = functions.https.onRequest(async (req, res) => {
@@ -94,7 +113,7 @@ exports.signUp = functions.https.onRequest(async (req, res) => {
     })
   });
 
-  exports.signIn = functions.https.onRequest(async (req, res) => {
+exports.signIn = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
         res.header('Access-Control-Allow-Origin', "*");     // TODO - Make this more secure!!
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
@@ -110,3 +129,33 @@ exports.signUp = functions.https.onRequest(async (req, res) => {
     });
     });
   });
+
+exports.createSurvey = async (req, res) => {
+    cors(req, res, () => {
+        const survey = req.body;
+        survey['createdAt'] = new Date();
+        survey['updatedAt'] = new Date();
+        survey['voterList'] = [];
+        survey['result'] = null;
+        survey['candidates'] = [];
+        admin.firestore().collection('surveys').doc().set(survey).then(res => {
+            res.json({result: res, error: null});
+        }).catch(err => {
+            res.json({error: err});
+        });
+        });
+};
+
+exports.addOption = async (req, res) => {
+    cors(req, res, () => {
+        const surveyParameters = {
+            surveyId: req.body.surveyId,
+            option: req.body.option
+        }
+        admin.firestore().collection('surveys').doc(surveyParameters.surveyId).collection('options').add(surveyParameters.option).then(response => {
+            res.json({result: response, error: null});
+        }).catch(error => {
+            res.json({error: error});
+        });
+    });
+};
