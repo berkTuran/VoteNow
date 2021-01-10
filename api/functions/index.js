@@ -13,7 +13,7 @@ var firebaseConfig = {
     messagingSenderId: "564993989783",
     appId: "1:564993989783:web:90ed60e1ea7fdbddbcddd2",
     measurementId: "G-S42QHJLE3Q"
-  };
+};
 
 admin.initializeApp(firebaseConfig);
 FirebaseAuth.default.initializeApp(firebaseConfig);
@@ -23,15 +23,15 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
     const election = req.body;
     election['createdAt'] = new Date();
     election['updatedAt'] = new Date();
-    election['voterList'] = [];
     election['result'] = null;
     admin.firestore().collection('elections').doc().set(election).then(res => {
-        res.json({error: null});
+        res.json({result: res, error: null});
     }).catch(err => {
         res.json({error: err});
     });
     });
 });
+
 
 exports.getAllElections = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
@@ -156,5 +156,29 @@ exports.addOption = functions.https.onRequest(async (req, res) => {
         }).catch(error => {
             res.json({error: error});
         });
+    });
+});
+
+exports.voteElection = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        const electionId = req.body.electionId;
+        const vote = req.body.vote;
+        vote['createdAt'] = new Date();
+        const voterListReference = admin.firestore().collection('elections').doc(electionId).collection('voterList').doc()
+        voterListReference.collection('voterList').get().then(response => {
+                var isVoted = false
+                response.forEach(voteObject => {
+                    if (voteObject.data().userId == vote.userId) {
+                        isVoted = true;
+                    }
+                });
+                if (!isVoted) {
+                    admin.firestore().collection('elections').doc(electionId).collection('voterList').doc().add(vote).then(response => {
+                        res.json({success: true, response: response});
+                    })
+                }else {
+                    res.json({success: false, error: "The user with"+ vote.userId + " was voted before"});
+                }
+        })
     });
 });
