@@ -96,11 +96,14 @@
                         <br>
                         <br>
                         <h3><b>Start Date</b></h3>
-                        <input type="text" name="startDate" id="startS"/>
-                        <br>
-                        <br>
-                        <h3><b>End Date</b></h3>
-                        <input type="text" name="endDate" id="endS"/>
+                        
+                            <input type="text" name="startS" id="startS" />
+                            
+                            <h3><b>End Date</b></h3>
+                        
+                            <input type="text" name="endS" id="endS" />
+                            
+                        
                         <br>
                         <br>
                         <br>
@@ -110,6 +113,7 @@
                     </form>
                      
                  </div>
+                
             
             </div>
            
@@ -155,7 +159,41 @@
         <script src="js/smooth-scroll.min.js"></script>
         <script src="js/scripts.js"></script>
         <script src="js/question.js"></script>
-        <script src="js/createSurvey.js"></script>
+        <script>
+            $(document).ready(() => {
+    var dateFormat = "mm/dd/yy",
+        from = $("#startS")
+        .datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1
+        })
+        .on("change", function() {
+            to.datepicker("option", "minDate", getDate(this));
+        }),
+        to = $("#endS").datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1
+        })
+        .on("change", function() {
+            from.datepicker("option", "maxDate", getDate(this));
+        });
+
+    function getDate(element) {
+        var date;
+        try {
+            date = $.datepicker.parseDate(dateFormat, element.value);
+        } catch (error) {
+            date = null;
+        }
+
+        return date;
+    }
+}
+
+);
+        </script>
         
        
         
