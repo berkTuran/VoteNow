@@ -32,7 +32,6 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
     });
 });
 
-
 exports.getAllElections = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
         admin.firestore().collection('elections').get().then(snapshot => {
@@ -57,6 +56,48 @@ exports.getElection = functions.https.onRequest(async (req, res) => {
     }).catch(error => {
         res.json({error: error});
     });
+});
+
+exports.deleteElection = functions.https.onRequest(async (req, res) => {
+    const electionId = req.body.electionId;
+    admin.firestore().collection('elections').doc(electionId).delete().then(res => {
+        res.json({response: res});
+    }).catch(error => {
+        res.json({error: error});
+    });
+});
+
+exports.updateElection = functions.https.onRequest(async (req, res) => {
+    const electionId = req.body.electionId;
+    admin.firestore().collection('elections').doc(electionId).update(req.body.election).then(res => {
+        res.json({response: res});
+    }).catch(error => {
+        res.json({error: error});
+    });
+});
+
+exports.getUser = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        admin.firestore().collection('users').doc(req.body.userId).get().then(user => {
+            res.json({result: {id: user.id, data: user.data()}, error: null});
+        })
+    })
+});
+
+exports.updateUser = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        admin.firestore().collection('users').doc(req.body.userId).update(req.body.user).then(res => {
+            res.json({result: res, error: null});
+        })
+    })
+});
+
+exports.deleteUser = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        admin.firestore().collection('users').doc(req.body.userId).delete().then(res => {
+            res.json({result: res, error: null});
+        })
+    })
 });
 
 exports.addCandidate = functions.https.onRequest(async (req, res) => {
