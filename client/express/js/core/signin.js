@@ -11,8 +11,10 @@ $(document).ready(() => {
         let result = await $.post("https://us-central1-votenow-e5dc8.cloudfunctions.net/signIn", model);
         if (!!result.error.message) {
             alert(result.error.message);
+        
         } else {
             location.href = "/index.html";
+            alert("SUCCESS!");
         }
-    });
+    })
 });
