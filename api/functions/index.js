@@ -26,7 +26,7 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
     election['voterList'] = [];
     election['result'] = null;
     admin.firestore().collection('elections').doc().set(election).then(res => {
-        res.json({result: res, error: null});
+        res.json({error: null});
     }).catch(err => {
         res.json({error: err});
     });
