@@ -31,7 +31,7 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
         res.json({error: err});
     });
     });
-  });
+});
 
 exports.getAllElections = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
@@ -48,7 +48,7 @@ exports.getAllElections = functions.https.onRequest(async (req, res) => {
             res.json({error: error});
         });
     });
-  });
+});
 
 exports.getElection = functions.https.onRequest(async (req, res) => {
     const electionId = req.body.electionId;
@@ -59,7 +59,7 @@ exports.getElection = functions.https.onRequest(async (req, res) => {
     });
 });
 
-exports.addCandidate = async (req, res) => {
+exports.addCandidate = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
         const electionParameters = {
             electionId: req.body.electionId,
@@ -75,9 +75,8 @@ exports.addCandidate = async (req, res) => {
             res.json({error: error});
         });
     });
-};
+});
 
-// It registers an user in the system.
 exports.signUp = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {   
     const user = req.body;
@@ -111,7 +110,7 @@ exports.signUp = functions.https.onRequest(async (req, res) => {
         res.json({error: {code: errorCode, message: errorMessage}});
     });
     })
-  });
+});
 
 exports.signIn = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
@@ -128,9 +127,9 @@ exports.signIn = functions.https.onRequest(async (req, res) => {
         res.json(error);
     });
     });
-  });
+});
 
-exports.createSurvey = async (req, res) => {
+exports.createSurvey = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
         const survey = req.body;
         survey['createdAt'] = new Date();
@@ -144,9 +143,9 @@ exports.createSurvey = async (req, res) => {
             res.json({error: err});
         });
         });
-};
+});
 
-exports.addOption = async (req, res) => {
+exports.addOption = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
         const surveyParameters = {
             surveyId: req.body.surveyId,
@@ -158,4 +157,4 @@ exports.addOption = async (req, res) => {
             res.json({error: error});
         });
     });
-};
+});
