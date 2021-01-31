@@ -1,6 +1,6 @@
 $(document).ready(() => {
     if (localStorage.getItem("id") != null) {
-        location.href = "/index.html";
+        location.href = "/client/express/index.html";
     }
 
     $("#submit-button").click(async() => {
@@ -18,7 +18,7 @@ $(document).ready(() => {
             localStorage.setItem("id", result.result.user.uid);
             localStorage.setItem("token", result.result.user.stsTokenManager.accessToken);
             alert("SUCCESS!");
-            location.href = "/index.html";
+            location.href = "/client/express/index.html";
         }
     })
 });
