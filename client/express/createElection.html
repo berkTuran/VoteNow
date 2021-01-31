@@ -68,28 +68,51 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-lg-8">
-                        <br>
-                        <h2>
-                            <div class="col-md-10"> <label>Election Name</label> <input id="elecName" input type="text" name="Election Name" class="validate-required" required autocomplete="off"> </div>
-                        </h2>
-                        <br>
-                        <p class="lead">
-                            <h2>
-                                <div class="col-md-10"> <label>Election Description</label> <textarea rows="6" id="elecDesc" name="election-description" class="validate-required" required autocomplete="off"></textarea> </div>
-                            </h2>
-                        </p>
-                        <br>
-                        
+                       
                            
-
-                            <div>
-                                <input type="text" name="start" id="start" />
-                                <label for="start">Start Date</label>
-                            </div>
-                            <div>
-                                <input type="text" name="end" id="end" />
-                                <label for="end">Explation Date</label>
-                            </div>
+                    <form id="survey-form">
+                     
+                        
+                   
+                        <div class="d-flex flex-column align-items-center" style="width: 100%">
+            
+            
+                           <div class="d-flex flex-row">
+                   
+                               <div class="container" style="width: 1000px">
+                                   <table class="table table-hover table-primary" >
+                         <tbody>
+                           <tr>
+                               <th scope="col"><h4><b>Election Name</b></h4></th>
+                               <th scope="col"> <input id="elecName" input type="text" name="Election Name" class="validate-required" required autocomplete="off">  </th>
+                             </tr>
+                           <tr>
+                               <th scope="col"> <h4><b> Election Description</b></h4></th>
+                               <th scope="col" ><textarea rows="6" id="elecDesc" name="election-description" class="validate-required" required autocomplete="off"></textarea></th>
+                             </tr>
+                             <tr>
+                               <th scope="col"> <h4><b>Start Date</b></h4></th>
+                               <th scope="col" ><input type="text" name="start" id="start" />
+                                   
+                               </th>
+                             </tr>
+                             <tr>
+                               <th scope="col"><h4><b>Explatin Date</b></h4></th>
+                               <th scope="col" > <input type="text" name="end" id="end" />
+                             </tr>
+                             <tr>
+                               <th scope="col"> <h4><b>Open Modal</b></h4></th>
+                               <th scope="col" > <button id="myBtn">Open Modal</button></th>
+                             </tr>
+                             
+                         </tbody>
+                       </table>
+                         
+                   </form>
+                   <div class="row justify-content-center">
+                    <a class="btn" href="#" id="createElectionBtn">
+                        <span class="btn__text">Create Election</span>
+                    </a>
                     </div>
 
 
@@ -97,8 +120,8 @@
 
 
 
-                    <button id="myBtn">Open Modal</button>
-                    <div id="myModal" class="modal">
+                    
+                    <div id="myModal" class="modal" style="background-color: rgb(70, 70, 70);">
 
 
 
@@ -111,9 +134,9 @@
                                 <br>
 
                             </div>
-                            <div class="col-md-8 col-lg-7">
+                            <div class="col-md-8 col-lg-7" >
 
-                                <form class="text-left form-email row mx-0" id="add-candidate" method="POST">
+                                <form class="text-left form-email row mx-0" id="add-candidate" method="POST" >
                                     <div class="col-md-6"> <label>Candidate Name:</label> <input type="text" id="candName" name="Candidate Name" class="validate-required" required autocomplete="off"> </div>
                                     <div class="col-md-6"> <label>Choose a photo:</label> <input type="file" id="candPhoto" name="candidate-photo"> </div>
                                     <div class="col-md-12"> <label>Description:</label> <textarea rows="6" id="candDesc" name="candidate-description" class="validate-required" required autocomplete="off"></textarea> </div>
@@ -175,11 +198,9 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="row justify-content-center">
-                        <a class="btn" href="#" id="createElectionBtn">
-                            <span class="btn__text">Create Election</span>
-                        </a>
-                    </div>
+                    
+                </div>
+                    
                 </div>
             </div>
             </div>
@@ -273,6 +294,9 @@
             firebase.initializeApp(firebaseConfig);
             firebase.analytics();
         </script>
+        
+     
+       
     </body>
 
     </html>
