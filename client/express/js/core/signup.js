@@ -1,6 +1,6 @@
 $(document).ready(() => {
     if (localStorage.getItem("id") != null) {
-        location.href = "/index.html";
+        location.href = "/profile.html";
     }
 
     $("#submit-button").click(async () => {
