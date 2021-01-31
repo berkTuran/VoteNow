@@ -3,7 +3,7 @@ $(document).ready(() => {
         location.href = "/client/express/index.html";
     }
 
-    $("#submit-button").click(async() => {
+    $("#submit-button").click(async () => {
         let model = {};
         model.email = $("input#email").val();
         model.password = $("input#password").val();

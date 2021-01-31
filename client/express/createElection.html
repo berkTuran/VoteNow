@@ -25,10 +25,13 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-3 col-md-2">
-                                <a href="index.html"><img class="logo logo-dark" alt="logo" src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light" alt="logo" src="/client/express/img/additionalPics/logo.png" > </a>
+                                <a href="index.html"> <img class="logo logo-dark" alt="logo"
+                                        src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light"
+                                        alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
                             </div>
                             <div class="col-9 col-md-10 text-right">
-                                <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i class="icon icon--sm stack-interface stack-menu"></i> </a>
+                                <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i
+                                        class="icon icon--sm stack-interface stack-menu"></i> </a>
                             </div>
                         </div>
                     </div>
@@ -38,24 +41,29 @@
                         <div class="row">
                             <div class="col-lg-1 col-md-2 hidden-xs">
                                 <div class="bar__module">
-                                    <a href="index.html"> <img class="logo logo-dark" alt="logo" src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light" alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
+                                    <a href="index.html"> <img class="logo logo-dark" alt="logo"
+                                            src="/client/express/img/additionalPics/logo.png"> <img
+                                            class="logo logo-light" alt="logo"
+                                            src="/client/express/img/additionalPics/logo.png"> </a>
                                 </div>
                             </div>
                             <div class="col-lg-11 text-right text-left-xs text-left-sm col-md-11">
                                 <div class="bar__module">
                                     <ul class="menu-horizontal text-left">
-                                        <li> <a href="signedmain.html"> Home</a> </li>
-                                       <li> <a href="surveys.html">Election & Survey <br></a> </li>
-                                        <li> <a href="signedhowItWorks.html"> How It Works</a> </li>
-                                        <li> <a href="signedsupport.html"> Support</a> </li>
-                                        <li> <a href="signedpricing.html">
-                                        Pricing</a> </li>
+                                        <li> <a href="main.html"> Home</a> </li>
+                                        <li> <a href="surveys.html">Election & Survey <br></a> </li>
+                                        <li> <a href="howItWorks.html"> How It Works</a> </li>
+                                        <li> <a href="support.html"> Support</a> </li>
+                                        <li> <a href="pricing.html">
+                                                Pricing</a> </li>
                                     </ul>
                                 </div>
                                 <div class="bar__module">
-                                    <a class="btn btn--sm type--uppercase" href="profile.html"> <span class="btn__text">PROFILE</span> </a>
-                                    <a class="btn btn--sm btn--primary type--uppercase" href="main.html"> <span class="btn__text">
-                                    LOG OUT</span> </a>
+                                    <a class="btn btn--sm type--uppercase" href="signup.html" id="signUpButton"> <span
+                                            class="btn__text">SIGN UP</span> </a>
+                                    <a class="btn btn--sm btn--primary type--uppercase" href="signin.html"
+                                        id="signInButton"> <span class="btn__text">
+                                            sIGN IN</span> </a>
                                 </div>
                             </div>
                         </div>
@@ -70,26 +78,29 @@
                     <div class="col-md-10 col-lg-8">
                         <br>
                         <h2>
-                            <div class="col-md-10"> <label>Election Name</label> <input id="elecName" input type="text" name="Election Name" class="validate-required" required autocomplete="off"> </div>
+                            <div class="col-md-10"> <label>Election Name</label> <input id="elecName" input type="text"
+                                    name="Election Name" class="validate-required" required autocomplete="off"> </div>
                         </h2>
                         <br>
                         <p class="lead">
-                            <h2>
-                                <div class="col-md-10"> <label>Election Description</label> <textarea rows="6" id="elecDesc" name="election-description" class="validate-required" required autocomplete="off"></textarea> </div>
-                            </h2>
+                        <h2>
+                            <div class="col-md-10"> <label>Election Description</label> <textarea rows="6" id="elecDesc"
+                                    name="election-description" class="validate-required" required
+                                    autocomplete="off"></textarea> </div>
+                        </h2>
                         </p>
                         <br>
-                        
-                           
 
-                            <div>
-                                <input type="text" name="start" id="start" />
-                                <label for="start">Start Date</label>
-                            </div>
-                            <div>
-                                <input type="text" name="end" id="end" />
-                                <label for="end">Explation Date</label>
-                            </div>
+
+
+                        <div>
+                            <input type="text" name="start" id="start" />
+                            <label for="start">Start Date</label>
+                        </div>
+                        <div>
+                            <input type="text" name="end" id="end" />
+                            <label for="end">Explation Date</label>
+                        </div>
                     </div>
 
 
@@ -114,11 +125,17 @@
                             <div class="col-md-8 col-lg-7">
 
                                 <form class="text-left form-email row mx-0" id="add-candidate" method="POST">
-                                    <div class="col-md-6"> <label>Candidate Name:</label> <input type="text" id="candName" name="Candidate Name" class="validate-required" required autocomplete="off"> </div>
-                                    <div class="col-md-6"> <label>Choose a photo:</label> <input type="file" id="candPhoto" name="candidate-photo"> </div>
-                                    <div class="col-md-12"> <label>Description:</label> <textarea rows="6" id="candDesc" name="candidate-description" class="validate-required" required autocomplete="off"></textarea> </div>
+                                    <div class="col-md-6"> <label>Candidate Name:</label> <input type="text"
+                                            id="candName" name="Candidate Name" class="validate-required" required
+                                            autocomplete="off"> </div>
+                                    <div class="col-md-6"> <label>Choose a photo:</label> <input type="file"
+                                            id="candPhoto" name="candidate-photo"> </div>
+                                    <div class="col-md-12"> <label>Description:</label> <textarea rows="6" id="candDesc"
+                                            name="candidate-description" class="validate-required" required
+                                            autocomplete="off"></textarea> </div>
 
-                                    <div class="col-md-5 col-lg-4"> <button id="create-candidate-button" type="button" class="btn btn--primary type--uppercase">CREATE CANDIDATE</button> </div>
+                                    <div class="col-md-5 col-lg-4"> <button id="create-candidate-button" type="button"
+                                            class="btn btn--primary type--uppercase">CREATE CANDIDATE</button> </div>
 
                                 </form>
                                 <br>
@@ -191,23 +208,31 @@
                 <div class="row">
                     <div class="col-sm-7">
                         <ul class="list-inline">
-                                <li> <a href="signedabout.html"><span class="h6 type--uppercase">About</span></a> </li>
-                                <li> <a href="signedsupport.html"><span class="h6 type--uppercase"><p>Support</p></span></a> </li>
+                            <li> <a href="signedabout.html"><span class="h6 type--uppercase">About</span></a> </li>
+                            <li> <a href="signedsupport.html"><span class="h6 type--uppercase">
+                                        <p>Support</p>
+                                    </span></a> </li>
                         </ul>
                     </div>
                     <div class="col-sm-5 text-right text-center-xs">
                         <ul class="social-list list-inline list--hover">
-                            <li><a href="https://www.google.com"><i class="socicon socicon-google icon icon--xs"></i></a></li>
-                            <li><a href="https://twitter.com"><i class="socicon socicon-twitter icon icon--xs"></i></a></li>
-                            <li><a href="https://www.facebook.com"><i class="socicon socicon-facebook icon icon--xs"></i></a></li>
-                            <li><a href="https://www.instagram.com"><i class="socicon socicon-instagram icon icon--xs"></i></a></li>
+                            <li><a href="https://www.google.com"><i
+                                        class="socicon socicon-google icon icon--xs"></i></a></li>
+                            <li><a href="https://twitter.com"><i class="socicon socicon-twitter icon icon--xs"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com"><i
+                                        class="socicon socicon-facebook icon icon--xs"></i></a></li>
+                            <li><a href="https://www.instagram.com"><i
+                                        class="socicon socicon-instagram icon icon--xs"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-7"> <span class="type--fine-print">© <span class="update-year"></span> VoteNow Inc.</span>
+                    <div class="col-sm-7"> <span class="type--fine-print">© <span class="update-year"></span> VoteNow
+                            Inc.</span>
                     </div>
-                    <div class="col-sm-5 text-right text-center-xs"> <a class="type--fine-print" href="#">support@VoteNow.io</a> </div>
+                    <div class="col-sm-5 text-right text-center-xs"> <a class="type--fine-print"
+                            href="#">support@VoteNow.io</a> </div>
                 </div>
             </div>
         </footer>
@@ -225,15 +250,15 @@
             // Kipi kapatan <span> öğesini edinin
             var span = document.getElementsByClassName("close")[0];
             // Kullanıcı düğmeyi tıklattığında
-            btn.onclick = function() {
-                    modal.style.display = "block";
-                }
-                // Kullanıcı <span> (x) düğmesini tıkladığında, popup
-            span.onclick = function() {
-                    modal.style.display = "none";
-                }
-                // Kullanıcı modelden başka herhangi bir yeri tıklattıysa, onu kapatın.
-            window.onclick = function(event) {
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+            // Kullanıcı <span> (x) düğmesini tıkladığında, popup
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+            // Kullanıcı modelden başka herhangi bir yeri tıklattıysa, onu kapatın.
+            window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
@@ -272,6 +297,18 @@
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
             firebase.analytics();
+        </script>
+        <script type="text/javascript">
+            if (localStorage.getItem("id") != null) {
+                $("a#signUpButton .btn__text").text("PROFILE");
+                $("a#signInButton .btn__text").text("SIGN OUT");
+            }
+            $("#signInButton").click(async () => {
+                if (localStorage.getItem("id") != null) {
+                    localStorage.clear();
+                    location.href = "/signin.html";
+                }
+            });
         </script>
     </body>
 

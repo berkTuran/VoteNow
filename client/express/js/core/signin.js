@@ -1,9 +1,8 @@
 $(document).ready(() => {
     if (localStorage.getItem("id") != null) {
-        location.href = "/client/express/index.html";
+        location.href = "/main.html";
     }
-
-    $("#submit-button").click(async() => {
+    $("#submit-button").click(async () => {
         let model = {};
         model.email = $("input#email").val();
         model.password = $("input#password").val();
@@ -18,7 +17,8 @@ $(document).ready(() => {
             localStorage.setItem("id", result.result.user.uid);
             localStorage.setItem("token", result.result.user.stsTokenManager.accessToken);
             alert("SUCCESS!");
-            location.href = "/client/express/index.html";
+            location.href = "/main.html";
         }
+
     })
 });
