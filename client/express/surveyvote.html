@@ -73,76 +73,48 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-lg-8">
-                        <h1><b>Election Voting</b></h1>
-                        <p class="lead">To select the best candidate, give your vote now.</p>
+
+                        <h1><b>Survey Voting</b></h1>
+                        <p class="lead">To select the best option, give your vote now.</p>
+                        
+                        <div class="bordered">
+                            <h4 class="text-left" style="color:  rgba(31, 31, 32, 0.938)"><b>Select one of these selections.</b></h4>  <br>
+                            <form >
+                                <div class="text-left">
+                                <input type="radio" id="s1" name="survey" value="s1" style="width: 10px; height: 24px; background-color: rgba(148, 148, 150, 0.466) "  > <label for="s1"><h4> Selection 1</h4></label>
+                                <br>
+                                <input type="radio" id="s2" name="survey" value="s2" style="width: 10px; height: 24px; background-color: rgba(148, 148, 150, 0.466)" > <label for="s2"><h4> Selection 2</h4></label>
+                                <br>
+                                <input type="radio" id="s3" name="survey" value="s3" style="width: 10px; height: 24px; background-color: rgba(148, 148, 150, 0.466) " >  <label for="s3"><h4> Selection 3</h4></label>
+                                <br>
+                                <input type="radio" id="s4" name="survey" value="s4" style="width: 10px; height: 24px; background-color: rgba(148, 148, 150, 0.466)" >  <label for="s4"><h4> Selection 4</h4></label>
+                            </div>
+                                </form> 
+                                <div class="row justify-content-center">
+
+                                    <a class="btn" href="#">
+                                        <span class="btn__text">Send Vote</span>
+                                    </a>
+                                </div>
+            
+             
+                        </div>
+                        
                     </div>
                 </div>
             </div>
         </section>
         <section>
-            <div class="container">
-                <div class="masonry">
-                    <div class="masonry__container row masonry--active">
-                        <div class="col-md-4 masonry__item">
-                            <div class="card card-2 text-center">
-                                <div class="card__top">
-                                    <a href="#"> <img alt="Image" style="width: 250px;"
-                                            src="/client/express/img/additionalPics/profil.png"> </a>
-                                </div>
-                                <div class="card__body">
-                                    <h4>Candidate 1</h4> <span class="type--fade">Candidate</span>
-                                    <p>Select the best candidate</p>
-                                </div>
-                                <div class="card__bottom text-center">
-                                    <a class="btn" href="#">
-                                        <span class="btn__text">Select</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 masonry__item">
-                            <div class="card card-2 text-center">
-                                <div class="card__top">
-                                    <a href="#"> <img alt="Image" style="width: 250px;"
-                                            src="/client/express/img/additionalPics/profil.png"> </a>
-                                </div>
-                                <div class="card__body">
-                                    <h4>Candidate 2</h4> <span class="type--fade">Candidate</span>
-                                    <p>Select the best candidate</p>
-                                </div>
-                                <div class="card__bottom text-center">
-                                    <a class="btn" href="#">
-                                        <span class="btn__text">Select</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 masonry__item">
-                            <div class="card card-2 text-center">
-                                <div class="card__top">
-                                    <a href="#"> <img alt="Image" style="width: 250px;"
-                                            src="/client/express/img/additionalPics/profil.png"> </a>
-                                </div>
-                                <div class="card__body">
-                                    <h4>Candidate 1</h4> <span class="type--fade">Candidate</span>
-                                    <p>Select the best candidate</p>
-                                </div>
-                                <div class="card__bottom text-center">
-                                    <a class="btn" href="#">
-                                        <span class="btn__text">Select</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <a class="btn" href="#">
-                            <span class="btn__text">Send Vote</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-    </div>
+            <style>
+                .bordered {
+                  width: 750px;
+                  height: 400px;
+                  padding: 20px;
+                  border: 10px outset  rgba(148, 148, 150, 0.466);
+                }
+              </style>
+              
+              
     </section>
     <footer class="text-center-xs space--xs">
         <div class="container">

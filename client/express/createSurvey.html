@@ -84,50 +84,60 @@
 
 
                     <form id="survey-form">
-                        <h3><b>Survey Name</b></h3>
-                        <br>
 
-                        <input id="surveyName" input type="text" name="Survey Name" class="validate-required" required
-                            autocomplete="off" placeholder="Survey Name">
-                        <h3><b>Survey Description</b></h3>
-                        <br>
-                        <textarea rows="4" id="surveyDesc" name="survey-description" class="validate-required" required
-                            autocomplete="off" placeholder="Survey Description"></textarea>
-                        <h3><b>Answer</b></h3>
-                        <br>
-                        <input type="text" id="name" placeholder="Enter an answer" autocomplete="off">
+                     
+                        
+                   
+                 <div class="d-flex flex-column align-items-center" style="width: 100%">
 
-                        <button id="btnAdd" class="btn btn--primary">Add Answer</button>
-                        <br>
-                        <br>
 
-                        <h3><b>Answer List:</b></h3>
-                        <select id="list" name="list" multiple>
+                    <div class="d-flex flex-row">
+            
+                        <div class="container" style="width: 1000px">
+                            <table class="table table-hover table-primary" >
+                  <tbody>
+                    <tr>
+                        <th scope="col"><h4><b>Survey Name</b></h4></th>
+                        <th scope="col"> <input id="surveyName" input type="text" name="Survey Name" class="validate-required" required autocomplete="off" placeholder="Survey Name"> </th>
+                      </tr>
+                    <tr>
+                        <th scope="col"> <h4><b>Survey Description</b></h4></th>
+                        <th scope="col" > <textarea rows="4" id="surveyDesc" name="survey-description" class="validate-required" required autocomplete="off" placeholder="Survey Description"></textarea></th>
+                      </tr>
+                      <tr>
+                        <th scope="col"> <h4><b>Answer</b></h4></th>
+                        <th scope="col" > <input type="text" id="name" placeholder="Enter an answer" autocomplete="off">
+                            <button id="btnAdd" class="btn btn--primary">Add Answer</button>
+                        </th>
+                      </tr>
+                      <tr>
+                        <th scope="col"><h4><b>Answer List:</b></h4></th>
+                        <th scope="col" >  <select id="list" name="list" multiple>
                         </select>
-                        <button id="btnRemove" class="btn btn--primary">Remove Selected Answer</button>
-                        <br>
-                        <br>
-                        <h3><b>Start Date</b></h3>
-
-                        <input type="text" name="startS" id="startS" />
-
-                        <h3><b>End Date</b></h3>
-
-                        <input type="text" name="endS" id="endS" />
-
-
-                        <br>
-                        <br>
-                        <br>
-                        <a class="btn" href="#" id="createSurveyBtn">
-                            <span class="btn__text">Create Survey</span>
-                        </a>
-                    </form>
-
-                </div>
-
-
+                        <button id="btnRemove" class="btn btn--primary">Remove Selected Answer</button></th>
+                      </tr>
+                      <tr>
+                        <th scope="col"> <h4><b>Start Date</b></h4></th>
+                        <th scope="col" > <input type="text" name="startS" id="startS" /></th>
+                      </tr>
+                      <tr>
+                        <th scope="col"><h4><b>End Date</b></h4> </th>
+                        <th scope="col" ><input type="text" name="endS" id="endS" /></th>
+                      </tr>
+                      
+                  </tbody>
+                </table>
+            </form>
+            <a class="btn" href="#" id="createSurveyBtn">
+                <span class="btn__text">Create Survey</span>
+            </a>
+                     
+        </div>
             </div>
+            </div>
+           
+           
+             </section>
 
 
         </section>
