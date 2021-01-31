@@ -33,6 +33,23 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
     });
 });
 
+exports.getMyElections = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        const ownerId = req.body;
+        const electionsRef = db.collection('elections');
+        var foundedElections = []
+        electionsRef.where('ownerId', '==', ownerId).get().then(snapshot => {
+            if (snapshot.empty) {
+                res.send({error: "No matching documents"});ß
+                }  
+                snapshot.forEach(doc => {
+                    foundedElections.push({id: doc.id, data: doc.data()});
+                });
+                res.send({result: foundedElections, err: null});
+        });
+});
+});
+
 exports.createSurvey = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
     const survey = req.body;
@@ -70,12 +87,31 @@ exports.getAllElections = functions.https.onRequest(async (req, res) => {
         admin.firestore().collection('elections').get().then(snapshot => {
             var elections = [];
             snapshot.forEach(e => {
-                elections.push({
+                if (e.data().isOpen) {
+                    elections.push({
+                        id: e.id,
+                        data: e.data()
+                    });
+                }
+            });
+            res.json({result: elections, error: null});
+        }).catch(error => {
+            res.json({error: error});
+        });
+    });
+});
+
+exports.getAllUsers = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        admin.firestore().collection('users').get().then(snapshot => {
+            var users = [];
+            snapshot.forEach(e => {
+                users.push({
                     id: e.id,
                     data: e.data()
                 });
             });
-            res.json({result: elections, error: null});
+            res.json({result: users, error: null});
         }).catch(error => {
             res.json({error: error});
         });
@@ -236,8 +272,6 @@ exports.createSurvey = functions.https.onRequest(async (req, res) => {
         survey['createdAt'] = new Date();
         survey['updatedAt'] = new Date();
         survey['voterList'] = [];
-        survey['result'] = null;
-        survey['candidates'] = [];
         admin.firestore().collection('surveys').doc().set(survey).then(res => {
             res.json({result: res, error: null});
         }).catch(err => {
