@@ -22,7 +22,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-3 col-md-2">
-                            <a href="main.html"> <img class="logo logo-dark" alt="logo" src="img/logo-dark.png"> <img class="logo logo-light" alt="logo" src="img/logo-light.png"> </a>
+                            <a href="main.html"> <img class="logo logo-dark" alt="logo" src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light" alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
                         </div>
                         <div class="col-9 col-md-10 text-right">
                             <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i class="icon icon--sm stack-interface stack-menu"></i> </a>
@@ -35,23 +35,23 @@
                     <div class="row">
                         <div class="col-lg-1 col-md-2 hidden-xs">
                             <div class="bar__module">
-                                <a href="main.html"> <img class="logo logo-dark" alt="logo" src="img/logo-dark.png"> <img class="logo logo-light" alt="logo" src="img/logo-light.png"> </a>
+                                <a href="main.html"> <img class="logo logo-dark" alt="logo" src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light" alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
                             </div>
                         </div>
                         <div class="col-lg-11 text-right text-left-xs text-left-sm col-md-11">
                             <div class="bar__module">
                                 <ul class="menu-horizontal text-left">
-                                    <li> <a href="main.html">home<br></a> </li>
-                                    <li> <a href="surveys.html">Election & Survey <br></a> </li>
-                                    <li> <a href="howitworks.hmtl"> How It Works</a> </li>
+                                    <li> <a href="main.html"> Home</a> </li>
+                                    <li> <a href="howItWorks.html"> How It Works</a> </li>
+                                    <li> <a href="support.html"> Support</a> </li>
                                     <li> <a href="pricing.html">
-                                        Pricing</a> </li>
+                                    Pricing</a> </li>
                                 </ul>
                             </div>
                             <div class="bar__module">
                                 <a class="btn btn--sm type--uppercase" href="signup.html"> <span class="btn__text">SIGN UP</span> </a>
                                 <a class="btn btn--sm btn--primary type--uppercase" href="signin.html"> <span class="btn__text">
-                                    sIGN IN</span> </a>
+                                sIGN IN</span> </a>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-md-6 col-lg-5">
                         <div class="switchable__text">
-                            <h2>Join VoteNow!</h2> <span>Already have an account? <a href="#">Sign In</a></span>
+                            <h2>Join VoteNow!</h2> <span>Already have an account? <a href="/client/express/signin.html">Sign In</a></span>
                             <hr class="short">
                             <form id="signup-form" method="POST">
                                 <div class="row">
@@ -110,7 +110,9 @@
                                     <div class="col-12">
                                         <h5>E-Mail</h5><input id="email" type="email" name="Email Address" placeholder="Email Address" required autocomplete="off"> </div>
                                     <div class="col-12">
-                                        <h5>Password</h5><input id="password" type="password" name="Password" placeholder="Password" required> </div>
+                                        <h5>Password</h5>
+                                        <p>Password must be 6 digits. </p>
+                                        <input id="password" type="password" name="Password" placeholder="Password" required> </div>
                                     <div class="col-12">
                                         <h5>Confirm Password</h5> <input id="valid-password" type="password" name="Password-confirm" placeholder="Confirm Password" required></div>
 
@@ -124,6 +126,8 @@
                         </div>
                         <div class="col-md-6 col-lg-5"> <img alt="Image" class="border--round box-shadow-shallow" src="img/landing-7.jpg"> </div>
                     </div>
+                    <div class="col-md-6 col-lg-5"> <img alt="Image" class="border--round box-shadow-wide" src="img/additionalPics/sign.png"> </div>
+               
                 </div>
         </section>
         <footer class="text-center-xs space--xs">
@@ -131,8 +135,8 @@
                 <div class="row">
                     <div class="col-sm-7">
                         <ul class="list-inline">
-                            <li> <a href="#"><span class="h6 type--uppercase">About</span></a> </li>
-                            <li> <a href="#"><span class="h6 type--uppercase"><p>Support</p></span></a> </li>
+                            <li> <a href="about.html"><span class="h6 type--uppercase">About</span></a> </li>
+                            <li> <a href="support.html"><span class="h6 type--uppercase"><p>Support</p></span></a> </li>
                         </ul>
                     </div>
                     <div class="col-sm-5 text-right text-center-xs">
