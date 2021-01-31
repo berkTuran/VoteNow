@@ -17,6 +17,7 @@
 </head>
 
 <body data-smooth-scroll-offset="77">
+    
     <div class="nav-container">
         <div class="via-1608808376035" via="via-1608808376035" vio="Main Navigation">
             <div class="bar bar--sm visible-xs">
@@ -66,47 +67,85 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-lg-8">
-                        <h1><b>Survey Voting</b></h1>
-                        <p class="lead">To select the best option, give your vote now.</p>
-                        
-                        <div class="bordered">
-                            <h4 class="text-left" style="color:  rgba(31, 31, 32, 0.938)"><b>Select one of these selections.</b></h4>  <br>
-                            <form >
-                                <div class="text-left">
-                                <input type="radio" id="s1" name="survey" value="s1" style="width: 10px; height: 24px; background-color: rgba(148, 148, 150, 0.466) "  > <label for="s1"><h4> Selection 1</h4></label>
-                                <br>
-                                <input type="radio" id="s2" name="survey" value="s2" style="width: 10px; height: 24px; background-color: rgba(148, 148, 150, 0.466)" > <label for="s2"><h4> Selection 2</h4></label>
-                                <br>
-                                <input type="radio" id="s3" name="survey" value="s3" style="width: 10px; height: 24px; background-color: rgba(148, 148, 150, 0.466) " >  <label for="s3"><h4> Selection 3</h4></label>
-                                <br>
-                                <input type="radio" id="s4" name="survey" value="s4" style="width: 10px; height: 24px; background-color: rgba(148, 148, 150, 0.466)" >  <label for="s4"><h4> Selection 4</h4></label>
-                            </div>
-                                </form> 
-                                <div class="row justify-content-center">
-                                    <a class="btn" href="#">
-                                        <span class="btn__text">Send Vote</span>
-                                    </a>
-                                </div>
-            
-             
-                        </div>
-                        
+                        <h1><b>Finished Elections & Surveys</b></h1>
+                        <p class="lead">You can see the results of finished election and survey with one click! </p>
                     </div>
                 </div>
             </div>
         </section>
-        <section>
-            <style>
-                .bordered {
-                  width: 750px;
-                  height: 400px;
-                  padding: 20px;
-                  border: 10px outset  rgba(148, 148, 150, 0.466);
-                }
-              </style>
-              
-              
-    </section>
+        
+        <div class="d-flex flex-column align-items-center" style="width: 100%">
+
+
+            <div class="d-flex flex-row">
+    
+                <div class="container" style="width: 500px">
+                    <table class="table table-hover table-primary">
+                        <thead>
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col" style="width: 130px;"> Result</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Election 1</th>
+                            <td colspan="1"><a class="btn btn--sm btn--primary type--uppercase" href="/client/express/result.html"> <span class="btn__text">
+                                Result</span> </a> </td> 
+                            
+                          </tr>
+                          <tr>
+                            <th scope="row">Election 2</th>
+                            <td colspan="2"><a class="btn btn--sm btn--primary type--uppercase" href="/client/express/result.html"> <span class="btn__text">
+                                Result</span> </a> </td> 
+                          </tr>
+                          <tr>
+                            <th scope="row">Election 3</th>
+                            <td colspan="1"><a class="btn btn--sm btn--primary type--uppercase" href="/client/express/result.html"> <span class="btn__text">
+                                Result</span> </a> </td> 
+                          </tr>
+                          <tr>
+                            <th scope="row">Election 4</th>
+                            <td colspan="1"><a class="btn btn--sm btn--primary type--uppercase" href="/client/express/result.html"> <span class="btn__text">
+                                Result</span> </a> </td> 
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="container" style="width: 500px">
+                    <table class="table table-hover table-primary">
+                        <thead>
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col" style="width: 130px;"> Result</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Survey 1</th>
+                            <td colspan="1"><a class="btn btn--sm btn--primary type--uppercase" href="/client/express/surveyresult.html"> <span class="btn__text">
+                                Result</span> </a> </td> 
+                          </tr>
+                          <tr>
+                            <th scope="row">Survey 2</th>
+                            <td colspan="2"><a class="btn btn--sm btn--primary type--uppercase" href="/client/express/surveyresult.html"> <span class="btn__text">
+                                Result</span> </a> </td> </tr>
+                          <tr>
+                            <th scope="row">Survey 3</th>
+                            <td colspan="3"><a class="btn btn--sm btn--primary type--uppercase" href="/client/express/surveyresult.html"> <span class="btn__text">
+                                Result</span> </a> </td>       </tr>
+                          <tr>
+                            <th scope="row">Survey 4</th>
+                            <td colspan="4"><a class="btn btn--sm btn--primary type--uppercase" href="/client/express/surveyresult.html"> <span class="btn__text">
+                                Result</span> </a> </td>     </tr>
+                        </tbody>
+                      </table>
+                </div>
+        
+       
+    </div>
+    <br>
+    <br>
     <footer class="text-center-xs space--xs">
         <div class="container">
             <div class="row">
