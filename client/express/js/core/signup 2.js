@@ -3,7 +3,7 @@ $(document).ready(() => {
         location.href = "/index.html";
     }
 
-    $("#submit-button").click(async() => {
+    $("#submit-button").click(async () => {
         let model = {};
         model.firstName = $("input#firstName").val();
         model.lastName = $("input#lastName").val();

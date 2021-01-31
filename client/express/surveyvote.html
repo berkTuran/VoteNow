@@ -23,10 +23,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-3 col-md-2">
-                            <a href="index.html"> <img class="logo logo-dark" alt="logo" src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light" alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
+                            <a href="index.html"> <img class="logo logo-dark" alt="logo"
+                                    src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light"
+                                    alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
                         </div>
                         <div class="col-9 col-md-10 text-right">
-                            <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i class="icon icon--sm stack-interface stack-menu"></i> </a>
+                            <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i
+                                    class="icon icon--sm stack-interface stack-menu"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -36,24 +39,28 @@
                     <div class="row">
                         <div class="col-lg-1 col-md-2 hidden-xs">
                             <div class="bar__module">
-                                <a href="index.html"> <img class="logo logo-dark" alt="logo" src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light" alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
+                                <a href="index.html"> <img class="logo logo-dark" alt="logo"
+                                        src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light"
+                                        alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
                             </div>
                         </div>
                         <div class="col-lg-11 text-right text-left-xs text-left-sm col-md-11">
                             <div class="bar__module">
                                 <ul class="menu-horizontal text-left">
-                                    <li> <a href="signedmain.html"> Home</a> </li>
-                                   <li> <a href="surveys.html">Election & Survey <br></a> </li>
-                                    <li> <a href="signedhowItWorks.html"> How It Works</a> </li>
-                                    <li> <a href="signedsupport.html"> Support</a> </li>
-                                    <li> <a href="signedpricing.html">
-                                    Pricing</a> </li>
+                                    <li> <a href="main.html"> Home</a> </li>
+                                    <li> <a href="surveys.html">Election & Survey <br></a> </li>
+                                    <li> <a href="howItWorks.html"> How It Works</a> </li>
+                                    <li> <a href="support.html"> Support</a> </li>
+                                    <li> <a href="pricing.html">
+                                            Pricing</a> </li>
                                 </ul>
                             </div>
                             <div class="bar__module">
-                                <a class="btn btn--sm type--uppercase" href="profile.html"> <span class="btn__text">PROFILE</span> </a>
-                                <a class="btn btn--sm btn--primary type--uppercase" href="main.html"> <span class="btn__text">
-                                LOG OUT</span> </a>
+                                <a class="btn btn--sm type--uppercase" href="signup.html" id="signUpButton"> <span
+                                        class="btn__text">SIGN UP</span> </a>
+                                <a class="btn btn--sm btn--primary type--uppercase" href="signin.html"
+                                    id="signInButton"> <span class="btn__text">
+                                        sIGN IN</span> </a>
                             </div>
                         </div>
                     </div>
@@ -66,6 +73,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-lg-8">
+
                         <h1><b>Survey Voting</b></h1>
                         <p class="lead">To select the best option, give your vote now.</p>
                         
@@ -83,6 +91,7 @@
                             </div>
                                 </form> 
                                 <div class="row justify-content-center">
+
                                     <a class="btn" href="#">
                                         <span class="btn__text">Send Vote</span>
                                     </a>
@@ -113,8 +122,10 @@
                 <div class="col-sm-7">
                     <ul class="list-inline">
                         <li> <a href="signedabout.html"><span class="h6 type--uppercase">About</span></a> </li>
-                        <li> <a href="signedsupport.html"><span class="h6 type--uppercase"><p>Support</p></span></a> </li>
-                </ul>
+                        <li> <a href="signedsupport.html"><span class="h6 type--uppercase">
+                                    <p>Support</p>
+                                </span></a> </li>
+                    </ul>
                 </div>
                 <div class="col-sm-5 text-right text-center-xs">
                     <ul class="social-list list-inline list--hover">
@@ -126,8 +137,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-7"> <span class="type--fine-print">© <span class="update-year"></span> VoteNow Inc.</span> <a class="type--fine-print" href="#">Privacy Policy</a> <a class="type--fine-print" href="#">Legal</a> </div>
-                <div class="col-sm-5 text-right text-center-xs"> <a class="type--fine-print" href="#">support@VoteNow.io</a> </div>
+                <div class="col-sm-7"> <span class="type--fine-print">© <span class="update-year"></span> VoteNow
+                        Inc.</span> <a class="type--fine-print" href="#">Privacy Policy</a> <a class="type--fine-print"
+                        href="#">Legal</a> </div>
+                <div class="col-sm-5 text-right text-center-xs"> <a class="type--fine-print"
+                        href="#">support@VoteNow.io</a> </div>
             </div>
         </div>
     </footer>
@@ -138,6 +152,18 @@
     <script src="js/smooth-scroll.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/core/vote.js"></script>
+    <script type="text/javascript">
+        if (localStorage.getItem("id") != null) {
+            $("a#signUpButton .btn__text").text("PROFILE");
+            $("a#signInButton .btn__text").text("SIGN OUT");
+        }
+        $("#signInButton").click(async () => {
+            if (localStorage.getItem("id") != null) {
+                localStorage.clear();
+                location.href = "/signin.html";
+            }
+        });
+    </script>
 </body>
 
 </html>
