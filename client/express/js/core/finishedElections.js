@@ -1,7 +1,7 @@
 $(document).ready(() => {
     var modal = {}
     modal.status=false
-    console.log(modal);
+    
     $.post("https://us-central1-votenow-e5dc8.cloudfunctions.net/getAllElections", modal).then(e => {
         let row = $("#finished");
         
