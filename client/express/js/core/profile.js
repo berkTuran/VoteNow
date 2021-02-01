@@ -7,7 +7,7 @@ $(document).ready(() => {
         for (let i of e.result) {
             
             row.append(`<div class="boxed boxed--border bg--secondary boxed--lg box-shadow mx-auto" style='overflow-wrap: break-word;'>
-             
+
                 <h5>${i.data.firstName}</h5>
                 <h5>${i.data.lastName}</h5>
                 <h5>${i.data.email}</h5>
