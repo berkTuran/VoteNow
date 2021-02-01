@@ -310,14 +310,17 @@
             if (localStorage.getItem("id") != null) {
                 $("a#signUpButton .btn__text").text("PROFILE");
                 $("a#signInButton .btn__text").text("SIGN OUT");
+                
             }
             $("#signInButton").click(async () => {
                 if (localStorage.getItem("id") != null) {
                     localStorage.clear();
                     location.href = "/signin.html";
+                    
                 }
             });
         </script>
+        
     </body>
 
     </html>
