@@ -88,7 +88,7 @@
                             <li><span class="checkmark bg--primary-1"></span><span>Candidate Bios and
                                     Photos&nbsp;<br></span></li>
                         </ul>
-                        <a class="btn btn--primary" href="#" > <span class="btn__text" onclick="myFunction2()">
+                        <a class="btn btn--primary" href="#" id="freePlan" > <span class="btn__text" >
                                 Purchase Plan
                             </span> </a>
                     </div>
@@ -104,7 +104,7 @@
                             <li><span class="checkmark bg--primary-1"></span><span>Detailed Stats.</span></li>
                             <li><span class="checkmark bg--primary-1"></span><span>Email Support&nbsp;<br></span></li>
                         </ul>
-                        <a class="btn btn--primary-1" href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-billing;hidden"> <span class="btn__text">
+                        <a class="btn btn--primary-1" id="bestPlan" href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-billing;hidden"> <span class="btn__text">
                                 Purchase Plan 
                             </span> </a>
                     </div>
@@ -123,7 +123,7 @@
                             <li><span class="checkmark bg--primary-1"></span><span>SMS Voting Included<br><br></span>
                             </li>
                         </ul>
-                        <a class="btn btn--primary" href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-billing;hidden"> <span class="btn__text">
+                        <a class="btn btn--primary" href="#" id="premiumPlan" data-toggle-class=".account-tab:not(.hidden);hidden|#account-billing;hidden"> <span class="btn__text">
                                 Purchase Plan
                             </span> </a>
                     </div>
@@ -238,8 +238,8 @@ margin-bottom: 20px;
 <label for="fname"><i class="fa fa-user"></i> Full Name</label>
 <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
 <label for="email"><i class="fa fa-envelope"></i> Email</label>
-<input type="text" id="email" name="email" placeholder="john@example.com">
-<p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+<input type="text" id="pmail" name="email" placeholder="john@example.com">
+<p>Total <span class="price" style="color:black" id="amount"><b>$30</b></span></p>
 
 <div class="row">
 <div class="col-50">
@@ -282,19 +282,10 @@ margin-bottom: 20px;
 
 </div>
 
-<a class="btn btn--primary" href="#" > <span class="btn__text" onclick="myFunction()">
+<a class="btn btn--primary" href="#" id="submit-payment" > <span class="btn__text">
     Continue
 </span> </a>
 
-<script>
-function myFunction() {
-alert("Payment Successful!");
-}
-
-function myFunction2() {
-alert("You have free plan now!");
-}
-</script>
 
 </form>
 </div>
@@ -344,7 +335,9 @@ alert("You have free plan now!");
 <script src="js/parallax.js"></script>
 <script src="js/smooth-scroll.min.js"></script>
 <script src="js/scripts.js"></script>
+<script src="js/core/payment.js"></script>
 <script type="text/javascript">
+
     if (localStorage.getItem("id") != null) {
         $("a#signUpButton .btn__text").text("PROFILE");
         $("a#signInButton .btn__text").text("SIGN OUT");
