@@ -16,8 +16,9 @@
     <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" type="text/css">
     <link href="css/font-karla.css" rel="stylesheet" type="text/css">
     <link href="css/theme-charcoal.css" rel="stylesheet" type="text/css" />
-
-   
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/core/isSignedIn.js"></script>
+    <script src="js/core/profile.js"></script>
 
 </head>
 
@@ -69,23 +70,24 @@
             </nav>
         </div>
     </div>
-<div class="main-container">
+    <div class="main-container">
         <section class="bg--secondary space--sm">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="boxed boxed--lg boxed--border">
-                            
+
                             <div class="text-block text-center">
-                                
-                             <img class="rounded-circle z-depth-2 shadow p bg-light mb-4" alt="Image" src="img/additionalPics/noimg.jpg" data-holder-rendered="true"> 
-                                
+
+                                <img class="rounded-circle z-depth-2 shadow p bg-light mb-4" alt="Image"
+                                    src="img/additionalPics/noimg.jpg" data-holder-rendered="true">
+
 
                                 <span class="h5">Lucas Banks</span>
-                                
-                                
-                                
-                                
+
+
+
+
                             </div>
                             <hr>
                             <div class="text-block">
@@ -96,14 +98,15 @@
                                     </li>
                                     <li class="list-group-item">
                                         <a href="#"
-                                            data-toggle-class=".account-tab:not(.hidden);hidden|#account-elections;hidden">My Election & Survey</a>
+                                            data-toggle-class=".account-tab:not(.hidden);hidden|#account-elections;hidden">My
+                                            Election & Survey</a>
                                     </li>
                                     <li class="list-group-item">
                                         <a href="#"
                                             data-toggle-class=".account-tab:not(.hidden);hidden|#account-notifications;hidden">Email
                                             Notifications</a>
                                     </li>
-                                   
+
                                     <li class="list-group-item">
                                         <a href="#"
                                             data-toggle-class=".account-tab:not(.hidden);hidden|#account-password;hidden">Password</a>
@@ -125,32 +128,35 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Name:</label>
-                                            <input type="text" name="name" value="Lucas" readonly="yes">
+                                            <input type="text" name="name" readonly="yes" id="Name">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Surname:</label>
-                                            <input type="text" name="name" value="Banks" readonly="yes">
+                                            <input type="text" name="name" readonly="yes" id="Surname">
                                         </div>
                                         <div class="col-md-12">
                                             <label>Email Address:</label>
-                                            <input type="email" name="email" value="l_banks@stack.net" readonly="yes">
+                                            <input type="email" name="email" value="l_banks@stack.net" readonly="yes"
+                                                id="email">
                                         </div>
                                         <div class="col-md-12">
                                             <label>Gender:</label>
-                                            <input type="text" name="location" value="Male" readonly="yes">
+                                            <input type="text" name="location" value="Male" readonly="yes" id="gender">
                                         </div>
-                                        
+
                                         <div class="col-md-12">
                                             <label>Date Of Birth:</label>
-                                            <input type="text" name="website" value="10//04/1996" readonly="yes">
+                                            <input type="text" name="website" value="10//04/1996" readonly="yes"
+                                                id="birthDate">
                                         </div>
                                         <div class="col-md-12">
                                             <label>Purchase Plan:</label>
-                                            <input type="text" name="website" value="Pro Account" readonly="yes">
+                                            <input type="text" name="website" value="Pro Account" readonly="yes"
+                                                id="pruchasePlan">
                                         </div>
                                         <div class="col-md-12">
                                             <label>Bio:</label>
-                                            <textarea rows="4" name="bio" ></textarea>
+                                            <textarea rows="4" name="bio" id="Bio"></textarea>
                                             <br>
                                             <div class="col-lg-3 col-md-4">
                                                 <button type="submit" class="btn btn--primary type--uppercase">Save
@@ -164,7 +170,7 @@
                                             </div>
                                             <span>Allow my profile to be viewable by guests</span>
                                         </div>
-                                        
+
                                     </div>
                                 </form>
                             </div>
@@ -240,65 +246,65 @@
                                     </div>
                                 </form>
                             </div>
-                            
-                            <div id="account-elections" class="hidden account-tab"> 
-                                <h4>My Election & Survey List</h4> 
-                                <div class="boxed boxed--border bg--secondary">
-                                    
-                                    
-        <div class="container">
-            <div id="my-election-list" class="row">
-               
 
-                     </div>
-        </div>
-        
-    </div>
+                            <div id="account-elections" class="hidden account-tab">
+                                <h4>My Election & Survey List</h4>
+                                <div class="boxed boxed--border bg--secondary">
+
+
+                                    <div class="container">
+                                        <div id="my-election-list" class="row">
+
+
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-                            
-                            
                         </div>
+
+
                     </div>
-                </div>
-                <!--end of row-->
-            </div>
-            <!--end of container-->
-        </section>
-        <footer class="text-center-xs space--xs">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-7">
-                        <ul class="list-inline">
-                            <li> <a href="signedabout.html"><span class="h6 type--uppercase">About</span></a> </li>
-                            <li> <a href="signedsupport.html"><span class="h6 type--uppercase">
-                                        <p>Support</p>
-                                    </span></a> </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-5 text-right text-center-xs">
-                        <ul class="social-list list-inline list--hover">
-                            <li><a href="https://www.google.com"><i
-                                        class="socicon socicon-google icon icon--xs"></i></a></li>
-                            <li><a href="https://twitter.com"><i class="socicon socicon-twitter icon icon--xs"></i></a>
-                            </li>
-                            <li><a href="https://www.facebook.com"><i
-                                        class="socicon socicon-facebook icon icon--xs"></i></a></li>
-                            <li><a href="https://www.instagram.com"><i
-                                        class="socicon socicon-instagram icon icon--xs"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-7"> <span class="type--fine-print">© <span class="update-year"></span> VoteNow
-                            Inc.</span> </div>
-                    <div class="col-sm-5 text-right text-center-xs"> <a class="type--fine-print"
-                            href="#">support@VoteNow.io</a> </div>
                 </div>
             </div>
-        </footer>
+            <!--end of row-->
     </div>
-    <script src="js/jquery-3.1.1.min.js"></script>
+    <!--end of container-->
+    </section>
+    <footer class="text-center-xs space--xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <ul class="list-inline">
+                        <li> <a href="signedabout.html"><span class="h6 type--uppercase">About</span></a> </li>
+                        <li> <a href="signedsupport.html"><span class="h6 type--uppercase">
+                                    <p>Support</p>
+                                </span></a> </li>
+                    </ul>
+                </div>
+                <div class="col-sm-5 text-right text-center-xs">
+                    <ul class="social-list list-inline list--hover">
+                        <li><a href="https://www.google.com"><i class="socicon socicon-google icon icon--xs"></i></a>
+                        </li>
+                        <li><a href="https://twitter.com"><i class="socicon socicon-twitter icon icon--xs"></i></a>
+                        </li>
+                        <li><a href="https://www.facebook.com"><i
+                                    class="socicon socicon-facebook icon icon--xs"></i></a></li>
+                        <li><a href="https://www.instagram.com"><i
+                                    class="socicon socicon-instagram icon icon--xs"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7"> <span class="type--fine-print">© <span class="update-year"></span> VoteNow
+                        Inc.</span> </div>
+                <div class="col-sm-5 text-right text-center-xs"> <a class="type--fine-print"
+                        href="#">support@VoteNow.io</a> </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
     <script src="js/parallax.js"></script>
     <script src="js/smooth-scroll.min.js"></script>
     <script src="js/scripts.js"></script>
@@ -315,6 +321,8 @@
         });
     </script>
     <script src="js/core/myElectionList.js"></script>
+
+
 </body>
 
 </html>

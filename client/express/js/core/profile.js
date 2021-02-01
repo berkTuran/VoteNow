@@ -1,23 +1,18 @@
-$(document).ready(() => {
-    if (localStorage.getItem("id") == null) {
-        location.href = "/signin.html";
+$(window).on("load", async () => {
+    setTimeout(() => {
+
+    }, 1000);
+
+    var model = await $.post("https://us-central1-votenow-e5dc8.cloudfunctions.net/getUser", { userId: localStorage.getItem("id") });
+    if (!!model) {
+        model = model.result.data;
+        $("input#Name").val(model.firstName);
+        $("input#Surname").val(model.lastName);
+        $("input#email").val(model.firstName);
+        $("input#gender").val(model.gender);
+        $("input#birthDate").val(model.birthDate);
+       //$("input#pruchasePlan").val(model.lastName);
+      //$("input#Bio").val(model.firstName);
+
     }
-    $.get("https://us-central1-votenow-e5dc8.cloudfunctions.net/getUser").then(e => {
-        let row = $("#election-list");
-        for (let i of e.result) {
-            
-            row.append(`<div class="boxed boxed--border bg--secondary boxed--lg box-shadow mx-auto" style='overflow-wrap: break-word;'>
-
-                <h5>${i.data.firstName}</h5>
-                <h5>${i.data.lastName}</h5>
-                <h5>${i.data.email}</h5>
-                <h5>${i.data.password}</h5>
-                <h5>${i.data.birthDate}</h5>
-                <h5>${i.data.gender}</h5>
-                <h5>${i.id}</h5>
-
-
-        </div>`);
-        }
-    });
 });
