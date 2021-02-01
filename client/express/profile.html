@@ -12,6 +12,10 @@
     <link href="css/theme-charcoal.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" type="text/css">
+    <link href="css/font-karla.css" rel="stylesheet" type="text/css">
+    <link href="css/theme-charcoal.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -22,9 +26,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-3 col-md-2">
-                            <a href="index.html"> <img class="logo logo-dark" alt="logo"
-                                    src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light"
-                                    alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
+                            <a href="index.html"> <img alt="Image" src="img/additionalPics/logo.png"></a>
                         </div>
                         <div class="col-9 col-md-10 text-right">
                             <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i
@@ -38,9 +40,7 @@
                     <div class="row">
                         <div class="col-lg-1 col-md-2 hidden-xs">
                             <div class="bar__module">
-                                <a href="index.html"> <img class="logo logo-dark" alt="logo"
-                                        src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light"
-                                        alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
+                                <a href="index.html"> <img alt="Image" src="img/additionalPics/logo.png"> </a>
                             </div>
                         </div>
                         <div class="col-lg-11 text-right text-left-xs text-left-sm col-md-11">
@@ -67,40 +67,46 @@
             </nav>
         </div>
     </div>
-    <div class="main-container">
+<div class="main-container">
         <section class="bg--secondary space--sm">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="boxed boxed--lg boxed--border">
+                            
                             <div class="text-block text-center">
-                                <img alt="avatar" src="img/avatar-round-3.png" class="image--sm">
+                                
+                             <img class="rounded-circle z-depth-2 shadow p bg-light mb-4" alt="Image" src="img/additionalPics/noimg.jpg" data-holder-rendered="true"> 
+                                
+
                                 <span class="h5">Lucas Banks</span>
-                                <span>Pro Account</span>
-                                <span class="label">Pro</span>
+                                
+                                
+                                
+                                
                             </div>
                             <hr>
                             <div class="text-block">
-                                <ul class="menu-vertical">
-                                    <li>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
                                         <a href="#"
                                             data-toggle-class=".account-tab:not(.hidden);hidden|#account-profile;hidden">Profile</a>
                                     </li>
-                                    <li>
+                                    <li class="list-group-item">
+                                        <a href="#"
+                                            data-toggle-class=".account-tab:not(.hidden);hidden|#account-elections;hidden">My Election & Survey</a>
+                                    </li>
+                                    <li class="list-group-item">
                                         <a href="#"
                                             data-toggle-class=".account-tab:not(.hidden);hidden|#account-notifications;hidden">Email
                                             Notifications</a>
                                     </li>
-                                    <li>
-                                        <a href="#"
-                                            data-toggle-class=".account-tab:not(.hidden);hidden|#account-billing;hidden">Billing
-                                            Details</a>
-                                    </li>
-                                    <li>
+                                   
+                                    <li class="list-group-item">
                                         <a href="#"
                                             data-toggle-class=".account-tab:not(.hidden);hidden|#account-password;hidden">Password</a>
                                     </li>
-                                    <li>
+                                    <li class="list-group-item">
                                         <a href="#"
                                             data-toggle-class=".account-tab:not(.hidden);hidden|#account-delete;hidden">Delete
                                             Account</a>
@@ -116,28 +122,32 @@
                                 <form>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Real Name:</label>
-                                            <input type="text" name="name" value="Lucas Banks">
+                                            <label>Name & Surname:</label>
+                                            <input type="text" name="name" value="Lucas Banks" readonly="yes">
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Display Name:</label>
-                                            <input type="text" name="display-name" value="l_banks">
+                                            <label>User ID</label>
+                                            <input type="text" name="display-name" value="1234gdsf" readonly="yes">
                                         </div>
                                         <div class="col-md-12">
                                             <label>Email Address:</label>
-                                            <input type="email" name="email" value="l_banks@stack.net">
+                                            <input type="email" name="email" value="l_banks@stack.net" readonly="yes">
                                         </div>
                                         <div class="col-md-12">
                                             <label>Location:</label>
-                                            <input type="text" name="location" value="Melbourne">
+                                            <input type="text" name="location" value="Melbourne" readonly="yes">
                                         </div>
                                         <div class="col-md-12">
-                                            <label>Website:</label>
-                                            <input type="text" name="website" value="http://mrare.co">
+                                            <label>Purchase Plan:</label>
+                                            <input type="text" name="website" value="Pro Account" readonly="yes">
                                         </div>
                                         <div class="col-md-12">
                                             <label>Bio:</label>
-                                            <textarea rows="4" name="bio"></textarea>
+                                            <textarea rows="4" name="bio" ></textarea>
+                                            <div class="col-lg-3 col-md-4">
+                                                <button type="submit" class="btn btn--primary type--uppercase">Save
+                                                    Your Bio</button>
+                                            </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="input-checkbox input-checkbox--switch">
@@ -146,10 +156,7 @@
                                             </div>
                                             <span>Allow my profile to be viewable by guests</span>
                                         </div>
-                                        <div class="col-lg-3 col-md-4">
-                                            <button type="submit" class="btn btn--primary type--uppercase">Save
-                                                Profile</button>
-                                        </div>
+                                        
                                     </div>
                                 </form>
                             </div>
@@ -192,35 +199,15 @@
                                     <!--end of row-->
                                 </form>
                             </div>
-                            <div id="account-billing" class="hidden account-tab">
-                                <h4>Billing Details</h4>
-                                <div class="boxed boxed--border bg--secondary">
-                                    <h5>Payment Methods</h5>
-                                    <hr>
-                                    <form>
-                                        <ul>
-                                            <li class="row">
-                                                <div class="col-md-6">
-                                                    <p>
-                                                        <i class="material-icons">credit_card</i>
-                                                        <span> Mastercard ending in
-                                                            <strong>4722</strong>
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-3 text-right text-left-xs">
-                                                    <button type="submit" class="btn bg--error">Remove</button>
-                                                </div>
-                                                <div class="col-md-3 text-right text-left-xs">
-                                                    <button type="submit" class="btn">Edit</button>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <hr>
-                                        <button type="submit" class="btn">Add New Method</button>
-                                    </form>
-                                </div>
+                            <div id="account-delete" class="hidden account-tab">
+                                <h4>Delete Account</h4>
+                                <p>Permanently remove your account using the button below. Warning, this action is
+                                    permanent.</p>
+                                <form>
+                                    <button type="submit" class="btn bg--error type--uppercase">Delete Account</button>
+                                </form>
                             </div>
+
                             <div id="account-password" class="hidden account-tab">
                                 <h4>Password</h4>
                                 <p>Passwords must be at least 6 characters in length.</p>
@@ -245,14 +232,34 @@
                                     </div>
                                 </form>
                             </div>
-                            <div id="account-delete" class="hidden account-tab">
-                                <h4>Delete Account</h4>
-                                <p>Permanently remove your account using the button below. Warning, this action is
-                                    permanent.</p>
-                                <form>
-                                    <button type="submit" class="btn bg--error type--uppercase">Delete Account</button>
-                                </form>
+                            
+                            <div id="account-elections" class="hidden account-tab"> 
+                                <h4>My Election & Survey List</h4> 
+                                <div class="boxed boxed--border bg--secondary">
+                                    
+                                    
+        <div class="container">
+            <div id="election-list" class="row">
+               
+                    <div class="boxed boxed--border bg--secondary boxed--lg box-shadow mx-auto" style="overflow-wrap: break-word;">
+                        <h5>can deneme</h5><p>deneme123123</p>
+                        <div id="vote-now"><a class="btn btn--primary" data-field="8lEUrnIWpalXlKHwvMHe"><span class="btn__text" data-field="8lEUrnIWpalXlKHwvMHe" href="result.html">Show</span></a></div></div><div class="boxed boxed--border bg--secondary boxed--lg box-shadow mx-auto" style="overflow-wrap: break-word;">
+                        <h5>asdf</h5><p>---</p>
+                        <div id="vote-now"><a class="btn btn--primary" data-field="EW1kVXnFtfw90Aq6kwCb"><span class="btn__text" data-field="EW1kVXnFtfw90Aq6kwCb" href="result.html">Show</span></a></div></div><div class="boxed boxed--border bg--secondary boxed--lg box-shadow mx-auto" style="overflow-wrap: break-word;">
+                        <h5>election1</h5><p>election desc</p>
+                        <div id="vote-now"><a class="btn btn--primary" data-field="FRbrIQ3BBp5JNZKmybpt"><span class="btn__text" data-field="FRbrIQ3BBp5JNZKmybpt" href="result.html">Show</span></a></div></div><div class="boxed boxed--border bg--secondary boxed--lg box-shadow mx-auto" style="overflow-wrap: break-word;">
+                        <h5>test-election</h5><p>test-decription</p>
+                        <div id="vote-now"><a class="btn btn--primary" data-field="PmKfWFRBgqUIIL9XC8OL"><span class="btn__text" data-field="PmKfWFRBgqUIIL9XC8OL" href="result.html">Show</span></a></div></div><div class="boxed boxed--border bg--secondary boxed--lg box-shadow mx-auto" style="overflow-wrap: break-word;">
+                        <h5>deneme123</h5><p>deneme123</p>
+                        <div id="vote-now"><a class="btn btn--primary" data-field="kOsDvwcacuDvbDkPhQj9"><span class="btn__text" data-field="kOsDvwcacuDvbDkPhQj9" href="result.html">Show</a></div></div></div>
+            </div>
+        </div>
+        
+    </div>
+                                </div>
                             </div>
+                            
+                            
                         </div>
                     </div>
                 </div>

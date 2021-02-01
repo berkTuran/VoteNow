@@ -20,9 +20,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-3 col-md-2">
-                        <a href="index.html"> <img class="logo logo-dark" alt="logo"
-                                src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light"
-                                alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
+                        <a href="index.html"> <img alt="Image" src="img/additionalPics/logo.png"></a>
                     </div>
                     <div class="col-9 col-md-10 text-right">
                         <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i
@@ -36,9 +34,7 @@
                 <div class="row">
                     <div class="col-lg-1 col-md-2 hidden-xs">
                         <div class="bar__module">
-                            <a href="index.html"> <img class="logo logo-dark" alt="logo"
-                                    src="/client/express/img/additionalPics/logo.png"> <img class="logo logo-light"
-                                    alt="logo" src="/client/express/img/additionalPics/logo.png"> </a>
+                            <a href="index.html"> <img alt="Image" src="img/additionalPics/logo.png"> </a>
                         </div>
                     </div>
                     <div class="col-lg-11 text-right text-left-xs text-left-sm col-md-11">
@@ -92,7 +88,7 @@
                             <li><span class="checkmark bg--primary-1"></span><span>Candidate Bios and
                                     Photos&nbsp;<br></span></li>
                         </ul>
-                        <a class="btn btn--primary" href="#"> <span class="btn__text">
+                        <a class="btn btn--primary" href="#" > <span class="btn__text" onclick="myFunction2()">
                                 Purchase Plan
                             </span> </a>
                     </div>
@@ -108,8 +104,8 @@
                             <li><span class="checkmark bg--primary-1"></span><span>Detailed Stats.</span></li>
                             <li><span class="checkmark bg--primary-1"></span><span>Email Support&nbsp;<br></span></li>
                         </ul>
-                        <a class="btn btn--primary-1" href="#"> <span class="btn__text">
-                                Purchase Plan
+                        <a class="btn btn--primary-1" href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-billing;hidden"> <span class="btn__text">
+                                Purchase Plan 
                             </span> </a>
                     </div>
                 </div>
@@ -127,11 +123,188 @@
                             <li><span class="checkmark bg--primary-1"></span><span>SMS Voting Included<br><br></span>
                             </li>
                         </ul>
-                        <a class="btn btn--primary" href="#"> <span class="btn__text">
+                        <a class="btn btn--primary" href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-billing;hidden"> <span class="btn__text">
                                 Purchase Plan
                             </span> </a>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div id="account-billing" class="hidden account-tab">
+            <h4>Billing Details</h4>
+            <div class="boxed boxed--border bg--secondary">
+                <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+font-family: Arial;
+font-size: 17px;
+padding: 8px;
+}
+
+* {
+box-sizing: border-box;
+}
+
+.row {
+display: -ms-flexbox; /* IE10 */
+display: flex;
+-ms-flex-wrap: wrap; /* IE10 */
+flex-wrap: wrap;
+margin: 0 -16px;
+}
+
+.col-25 {
+-ms-flex: 25%; /* IE10 */
+flex: 25%;
+}
+
+.col-50 {
+-ms-flex: 50%; /* IE10 */
+flex: 50%;
+}
+
+.col-75 {
+-ms-flex: 75%; /* IE10 */
+flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+padding: 0 16px;
+}
+
+
+
+input[type=text] {
+width: 100%;
+margin-bottom: 20px;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 3px;
+}
+
+label {
+margin-bottom: 10px;
+display: block;
+}
+
+.icon-container {
+margin-bottom: 20px;
+padding: 7px 0;
+font-size: 24px;
+}
+
+
+
+
+
+a {
+color: #2196F3;
+}
+
+
+
+span.price {
+float: right;
+color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+.row {
+flex-direction: column-reverse;
+}
+.col-25 {
+margin-bottom: 20px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="row">
+<div class="col-75">
+<div class="container">
+<form action="/action_page.php">
+
+<div class="row">
+<div class="col-50">
+<h3>Billing Infos</h3>
+<label for="fname"><i class="fa fa-user"></i> Full Name</label>
+<input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+<label for="email"><i class="fa fa-envelope"></i> Email</label>
+<input type="text" id="email" name="email" placeholder="john@example.com">
+<p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+
+<div class="row">
+<div class="col-50">
+<label for="state">State</label>
+<input type="text" id="state" name="state" placeholder="NY">
+</div>
+<div class="col-50">
+<label for="zip">Zip</label>
+<input type="text" id="zip" name="zip" placeholder="10001">
+</div>
+</div>
+</div>
+
+<div class="col-50">
+<h3>Payment</h3>
+<label for="fname">Accepted Cards</label>
+<div class="icon-container">
+<i class="fa fa-cc-visa" style="color:navy;"></i>
+<i class="fa fa-cc-amex" style="color:blue;"></i>
+<i class="fa fa-cc-mastercard" style="color:red;"></i>
+<i class="fa fa-cc-discover" style="color:orange;"></i>
+</div>
+<label for="cname">Name on Card</label>
+<input type="text" id="cname" name="cardname" placeholder="John More Doe">
+<label for="ccnum">Credit card number</label>
+<input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+<label for="expmonth">Exp Month</label>
+<input type="text" id="expmonth" name="expmonth" placeholder="September">
+<div class="row">
+<div class="col-50">
+<label for="expyear">Exp Year</label>
+<input type="text" id="expyear" name="expyear" placeholder="2018">
+</div>
+<div class="col-50">
+<label for="cvv">CVV</label>
+<input type="text" id="cvv" name="cvv" placeholder="352">
+</div>
+</div>
+</div>
+
+</div>
+
+<a class="btn btn--primary" href="#" > <span class="btn__text" onclick="myFunction()">
+    Continue
+</span> </a>
+
+<script>
+function myFunction() {
+alert("Payment Successful!");
+}
+
+function myFunction2() {
+alert("You have free plan now!");
+}
+</script>
+
+</form>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
+
             </div>
         </div>
     </section>
@@ -182,6 +355,8 @@
             location.href = "/signin.html";
         }
     });
+
+    
 </script>
 </body>
 
