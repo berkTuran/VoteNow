@@ -1,9 +1,12 @@
-//BİTEN ELECTİONLAR GETİRİLECEK
 $(document).ready(() => {
-    $.get("https://us-central1-votenow-e5dc8.cloudfunctions.net/getAllElections").then(e => {
+    var modal = {}
+    modal.status=false
+    console.log(modal);
+    $.post("https://us-central1-votenow-e5dc8.cloudfunctions.net/getAllElections", modal).then(e => {
         let row = $("#finished");
+        
         for (let i of e.result) {
-            
+          console.log(e.result);  
             row.append(`<div class="boxed boxed--border bg--secondary boxed--lg box-shadow mx-auto" style='overflow-wrap: break-word;'>
                  
                 <h5>${i.data.electionName}</h5>
