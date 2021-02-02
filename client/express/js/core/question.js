@@ -3,7 +3,7 @@
 const btnAdd = document.querySelector('#btnAdd');
 const btnRemove = document.querySelector('#btnRemove');
 const sb = document.querySelector('#list');
-const name=$("input#surveyName").val();
+const name= $ ("input#surveyName").val();
 
 btnAdd.onclick = (e) => {
     e.preventDefault();
