@@ -76,34 +76,17 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="boxed boxed--lg boxed--border">
-                            <div class="text-block">
-                                <ul class="list-group">
-                                    <li class="list-group-item; btn-outline-success">
-                                        <a href="#"
-                                            data-toggle-class=".account-tab:not(.hidden);hidden|#account-profile;hidden"  >Profile</a>
-                                    </li>
-                                    <li class="list-group-item; btn-outline-info">
-                                        <a href="#"
-                                            data-toggle-class=".account-tab:not(.hidden);hidden|#account-elections;hidden" >My
-                                            Election & Survey</a>
-                                    </li>
-                                    <li class="list-group-item; btn-outline-warning">
-                                        <a href="#"
-                                            data-toggle-class=".account-tab:not(.hidden);hidden|#account-notifications;hidden" >Email
-                                            Notifications</a>
-                                    </li>
-
-                                    <li class="list-group-item; btn-outline-primary">
-                                        <a href="#"
-                                            data-toggle-class=".account-tab:not(.hidden);hidden|#account-password;hidden" >Password</a>
-                                    </li>
-                                    <li class="list-group-item; btn-outline-danger">
-                                        <a href="#"
-                                            data-toggle-class=".account-tab:not(.hidden);hidden|#account-delete;hidden" >Delete
-                                            Account</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item; btn-outline-success">
+                                    <a href="#"
+                                        data-toggle-class=".account-tab:not(.hidden);hidden|#account-profile;hidden">Profile</a>
+                                </li>
+                                <li class="list-group-item; btn-outline-info">
+                                    <a href="#"
+                                        data-toggle-class=".account-tab:not(.hidden);hidden|#account-elections;hidden">My
+                                        Election & Survey</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -140,7 +123,7 @@
                                             <input type="text" name="website" value="Pro Account" readonly="yes"
                                                 id="pruchasePlan">
                                         </div>
-                                        
+
                                 </form>
                             </div>
                             <div id="account-notifications" class="hidden account-tab">
@@ -182,61 +165,31 @@
                                     <!--end of row-->
                                 </form>
                             </div>
-                            <div id="account-delete" class="hidden account-tab">
-                                <h4>Delete Account</h4>
-                                <p>Permanently remove your account using the button below. Warning, this action is
-                                    permanent.</p>
-                                <form>
-                                    <button type="submit" class="btn bg--error type--uppercase">Delete Account</button>
-                                </form>
-                            </div>
-
-                            <div id="account-password" class="hidden account-tab">
-                                <h4>Password</h4>
-                                <p>Passwords must be at least 6 characters in length.</p>
-                                <form>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <label>Old Password:</label>
-                                            <input type="password" name="old-password">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>New Password:</label>
-                                            <input type="password" name="new-password">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Retype New Password:</label>
-                                            <input type="password" name="new-password-confirm">
-                                        </div>
-                                        <div class="col-lg-3 col-md-4">
-                                            <button type="submit" class="btn btn--primary type--uppercase">Save
-                                                Password</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div id="account-elections" class="hidden account-tab">
-                                <h4>My Election & Survey List</h4>
-                                <div class="boxed boxed--border bg--secondary">
 
 
-                                    <div class="container">
-                                        <div id="my-election-list" class="row">
-
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
                         </div>
 
+                        <div id="account-elections" class="hidden account-tab">
+                            <h4>My Election & Survey List</h4>
+                            <div class="boxed boxed--border bg--secondary">
 
+
+                                <div class="container">
+                                    <div id="my-election-list" class="row">
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
             </div>
-            <!--end of row-->
+    </div>
+    <!--end of row-->
     </div>
     <!--end of container-->
     </section>
