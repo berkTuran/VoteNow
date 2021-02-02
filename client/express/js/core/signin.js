@@ -16,7 +16,7 @@ $(document).ready(() => {
         } else {
             localStorage.setItem("id", result.result.user.uid);
             localStorage.setItem("token", result.result.user.stsTokenManager.accessToken);
-            location.href = "/profile.html";
+            location.href = "/home.html";
         }
 
     })

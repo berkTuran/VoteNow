@@ -8,7 +8,7 @@ $(window).on("load", async () => {
         model = model.result.data;
         $("input#Name").val(model.firstName);
         $("input#Surname").val(model.lastName);
-        $("input#email").val(model.firstName);
+        $("input#email").val(model.email);
         $("input#gender").val(model.gender);
         $("input#birthDate").val(model.birthDate);
        //$("input#pruchasePlan").val(model.lastName);
