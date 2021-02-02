@@ -84,14 +84,17 @@ exports.getAllSurveys = functions.https.onRequest(async (req, res) => {
 
 exports.getAllElections = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
-        admin.firestore().collection('elections').get().then(snapshot => {
+        var status = req.body.status
+        admin.firestore().collection('elections').get().then(snapshot => {   
             var elections = [];
             snapshot.forEach(e => {
-                if (e.data().isOpen) {
+                let data = e.data()
+                if (data.isOpen.toString() == status.toString()) {
                     elections.push({
                         id: e.id,
                         data: e.data()
                     });
+                    console.log(e.data())
                 }
             });
             res.json({result: elections, error: null});
