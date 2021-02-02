@@ -3,7 +3,7 @@
 const btnAdd = document.querySelector('#btnAdd');
 const btnRemove = document.querySelector('#btnRemove');
 const sb = document.querySelector('#list');
-const name = document.querySelector('#name');
+const name=$("input#surveyName").val();
 
 btnAdd.onclick = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ btnAdd.onclick = (e) => {
 
     // reset the value of the input
     name.value = '';
-    name.focus();
+    name.onfocus();
 };
 
 // remove selected option
