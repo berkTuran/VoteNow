@@ -2,6 +2,7 @@
 $(document).ready(() => {
     var modal = {}
     modal.id=localStorage.getItem("id");
+    modal.status=false;
     
     $.post("https://us-central1-votenow-e5dc8.cloudfunctions.net/getAllElections", modal).then(e => {
         let row = $("#my-election-list");
