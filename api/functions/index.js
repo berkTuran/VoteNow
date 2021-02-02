@@ -4,7 +4,7 @@ const functions = require('firebase-functions');
 const cors = require('cors')({origin: true});
 const admin = require('firebase-admin');
 const FirebaseAuth = require('firebase');
-
+const uuid = require('uuid');
 var firebaseConfig = {
     apiKey: "AIzaSyC8iVJRnPaTbAQb51nkMrDzx8G2iP5-ln8",
     authDomain: "votenow-e5dc8.firebaseapp.com",
@@ -84,14 +84,14 @@ exports.getAllElections = functions.https.onRequest(async (req, res) => {
         admin.firestore().collection('elections').get().then(snapshot => {   
             var elections = [];
             snapshot.forEach(e => {
-                let data = e.data()
-                if (data.isOpen.toString() == status.toString()) {
-                    elections.push({
-                        id: e.id,
-                        data: e.data()
-                    });
-                    console.log(e.data())
-                }
+                getElection(e.id).then(election => {
+                    if (election.isOpen.toString() == status.toString()) {
+                        elections.push({
+                            id: e.id,
+                            data: e.data()
+                        });
+                    }
+                })
             });
             res.json({result: elections, error: null});
         }).catch(error => {
@@ -139,15 +139,22 @@ function getElection(electionId) {
         let reference = admin.firestore().collection('elections').doc(electionId);
         reference.get()
             .then(snapshot => {
-                
-                resolve(snapshot.data());
+                var election = snapshot.data()
+                election.candidates = []
+                snapshot.data().candidates.forEach(e => {
+                    admin.firestore().collection('users').doc(e).get().then(snapshot => {
+                        let candidate = snapshot.data()
+                        election.candidates.push(candidate)
+                    })
+                })
+                res.json({response: election})
             });
     });
 }
 
 exports.getElection = functions.https.onRequest(async (req, res) => {
     const electionId = req.body.electionId;
-    admin.firestore().collection('elections').doc(electionId).get().then(snapshot => {
+    getElection(electionId).then(snapshot => {
         res.json({response: {id: snapshot.id, data: snapshot.data()}});
     }).catch(error => {
         res.json({error: error});
@@ -233,11 +240,25 @@ exports.addCandidate = functions.https.onRequest(async (req, res) => {
                 profileImageUrl: req.body.profileImageUrl
             }
         }
-        admin.firestore().collection('elections').doc(electionParameters.electionId).collection('candidates').add(electionParameters.candidate).then(response => {
-            res.json({result: response, error: null});
-        }).catch(error => {
-            res.json({error: error});
-        });
+        let userJSON = {
+            firstName: electionParameters.candidate.firstName,
+            lastName: electionParameters.candidate.lastName,
+            email: electionParameters.candidate.email,
+            createdAt: new Date(),
+            birthDate: electionParameters.candidate.birthDate,
+            gender: electionParameters.candidate.gender,
+            bio: electionParameters.candidate.bio,
+            profileImageUrl: electionParameters.candidate.profileImageUrl,
+            userType: "Candidate"
+        }
+        let parameters = {email: userJSON.email, password: uuid.v4()}
+        admin.auth().createUser(parameters).then(registeredUser => {
+            admin.firestore().collection('elections').doc(electionParameters.electionId).collection('candidates').doc(registeredUser.uid).set(userJSON).then(response => {
+                res.json({result: response,authKeys: {email: parameters.email, password: parameters.password} , error: null});
+            }).catch(error => {
+                res.json({error: error});
+            });
+        })
     });
 });
 
