@@ -20,34 +20,30 @@ FirebaseAuth.default.initializeApp(firebaseConfig);
 
 exports.createElection = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
-    const election = req.body;
+    const election = req.body.election;
+    const userId = req.body.userId;
     election['createdAt'] = new Date();
     election['updatedAt'] = new Date();
     election['result'] = null;
     election['isOpen'] = true;
-    admin.firestore().collection('elections').doc().set(election).then(res => {
-        res.json({result: res, error: null});
+    election['owner'] = userId
+    let electionRef = admin.firestore().collection('elections').doc()
+    electionRef.set(election).then(res => {
+        let userRef = admin.firestore().collection('users').doc(userId)
+        userRef.get().then(document => {
+            let user = document.data()
+            if (user.elections == undefined) {
+                userRef.update({elections: [electionRef.id]}).then(response => {
+                    res.json({result: response})
+                })
+            }else {
+                let allElections = user.elections.push(electionRef.id)
+            }
+        })
     }).catch(err => {
         res.json({error: err});
     });
     });
-});
-
-exports.getMyElections = functions.https.onRequest(async (req, res) => {
-    cors(req, res, () => {
-        const ownerId = req.body;
-        const electionsRef = db.collection('elections');
-        var foundedElections = []
-        electionsRef.where('ownerId', '==', ownerId).get().then(snapshot => {
-            if (snapshot.empty) {
-                res.send({error: "No matching documents"});ß
-                }  
-                snapshot.forEach(doc => {
-                    foundedElections.push({id: doc.id, data: doc.data()});
-                });
-                res.send({result: foundedElections, err: null});
-        });
-});
 });
 
 exports.createSurvey = functions.https.onRequest(async (req, res) => {
@@ -104,6 +100,23 @@ exports.getAllElections = functions.https.onRequest(async (req, res) => {
     });
 });
 
+exports.getMyElections = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        var userId = req.body.userId
+        let userRef = admin.firestore().collection('users').doc(userId)
+        userRef.get().then(document => {
+            let user = document.data()
+            var promises = []
+            user.elections.forEach(e => {
+                promises.push(getElection(e))
+            });
+            Promise.all(promises).then(results => {
+                res.json({result: results})
+            })
+        });
+    });
+});
+
 exports.getAllUsers = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
         admin.firestore().collection('users').get().then(snapshot => {
@@ -120,6 +133,17 @@ exports.getAllUsers = functions.https.onRequest(async (req, res) => {
         });
     });
 });
+
+function getElection(electionId) {
+    return new Promise((resolve, reject) => {
+        let reference = admin.firestore().collection('elections').doc(electionId);
+        reference.get()
+            .then(snapshot => {
+                
+                resolve(snapshot.data());
+            });
+    });
+}
 
 exports.getElection = functions.https.onRequest(async (req, res) => {
     const electionId = req.body.electionId;

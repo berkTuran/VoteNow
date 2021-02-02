@@ -1,14 +1,9 @@
 $(document).ready(() => {
-    if (localStorage.getItem("id") == null) {
-        location.href = "/signin.html";
-        alert("You need to login")
-        
-    }
     let candidates = [];
     let uploadFile;
 
     function uuidv4() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
             var r = Math.random() * 16 | 0,
                 v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
@@ -17,22 +12,22 @@ $(document).ready(() => {
 
     var dateFormat = "mm/dd/yy",
         from = $("#start")
-            .datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 1
-            })
-            .on("change", function () {
-                to.datepicker("option", "minDate", getDate(this));
-            }),
+        .datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1
+        })
+        .on("change", function() {
+            to.datepicker("option", "minDate", getDate(this));
+        }),
         to = $("#end").datepicker({
             defaultDate: "+1w",
             changeMonth: true,
             numberOfMonths: 1
         })
-            .on("change", function () {
-                from.datepicker("option", "maxDate", getDate(this));
-            });
+        .on("change", function() {
+            from.datepicker("option", "maxDate", getDate(this));
+        });
 
     function getDate(element) {
         var date;
@@ -72,7 +67,7 @@ $(document).ready(() => {
         if (candidates.length > 0) {
             for (let i of candidates) {
                 var pathRef = storageRef.child("/media/candidateImages/" + uuidv4() + i.photo.file.name);
-                pathRef.put(i.photo.file).then(function () {
+                pathRef.put(i.photo.file).then(function() {
                     pathRef.getDownloadURL().then(e => {
                         i.photo.path = e;
                     });
@@ -81,20 +76,20 @@ $(document).ready(() => {
         }
     });
 
-    $("#createElectionBtn").on("click", async () => {
+    $("#createElectionBtn").on("click", async() => {
         if (candidates.length > 0) {
             let model = {};
-            model.electionName = $("#elecName").val();
-            model.electionDiscription = $("#elecDesc").val();
-            model.startDate = $("#start").val();
-            model.endDate = $("#end").val();
-            model.currentID = localStorage.getItem("id");
-            model.candidates = [];
-            model.capacity = 100;
+            model.election.electionName = $("#elecName").val();
+            model.election.electionDiscription = $("#elecDesc").val();
+            model.election.startDate = $("#start").val();
+            model.election.endDate = $("#end").val();
+            model.election.candidates = [];
+            model.election.capacity = 100;
+            model.userId = localStorage.getItem('id');
             console.log(model);
 
             for (let i of candidates) {
-                model.candidates.push({
+                model.elections.candidates.push({
                     candidateName: i.candidateName,
                     bio: i.description,
                     profileImageUrl: i.photo.path,
