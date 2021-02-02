@@ -104,7 +104,7 @@ $(document).ready(() => {
     });
 
     $("#createElectionBtn").on("click", async() => {
-        if (candidates.length > 0) {
+        if (candidates.length > 0 && $("#elecName").val() != "" && $("#elecDesc").val() == "" && $("#start").val() != "" && $("#end").val() != "" ) {
             let model = { election: {}, userId: "" }
             model.election.electionName = $("#elecName").val();
             model.election.electionDiscription = $("#elecDesc").val();
@@ -139,7 +139,7 @@ $(document).ready(() => {
                 location.href = "/electionList.html";
             }
         } else {
-            alert("First you need to add candidates.");
+            alert("There is a problem with your election. Please check your information.");
         }
     });
 });
