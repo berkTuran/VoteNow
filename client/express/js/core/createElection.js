@@ -78,18 +78,18 @@ $(document).ready(() => {
 
     $("#createElectionBtn").on("click", async() => {
         if (candidates.length > 0) {
-            let model = {};
+            let model = { election: {}, userId: ""}
             model.election.electionName = $("#elecName").val();
             model.election.electionDiscription = $("#elecDesc").val();
             model.election.startDate = $("#start").val();
             model.election.endDate = $("#end").val();
             model.election.candidates = [];
             model.election.capacity = 100;
-            model.userId = localStorage.getItem('id');
+            model.userId=localStorage.getItem("id");
             console.log(model);
 
             for (let i of candidates) {
-                model.elections.candidates.push({
+                model.election.candidates.push({
                     candidateName: i.candidateName,
                     bio: i.description,
                     profileImageUrl: i.photo.path,
