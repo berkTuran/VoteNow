@@ -25,8 +25,8 @@ $(document).ready(() => {
         if (!!result.error.message) {
             alert(result.error.message);
         } else {
-           
-            location.href = "/signin.html";
+            alert("Register successful");
+            location.href = "/main.html";
         }
     });
 });

@@ -11,9 +11,8 @@ $(document).ready(() => {
         }
 
         let result = await $.post("https://us-central1-votenow-e5dc8.cloudfunctions.net/signIn", model);
-        console.log(result);
-        if (result.error != undefined) {
-            alert("HATA! Bilgilerinizi gözden geçiriniz!");
+        if (!!result.error) {
+            alert(result.error.message);
         } else {
             localStorage.setItem("id", result.result.user.uid);
             localStorage.setItem("token", result.result.user.stsTokenManager.accessToken);

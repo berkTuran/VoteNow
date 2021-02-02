@@ -54,8 +54,8 @@
                                     </ul>
                                 </div>
                                 <div class="bar__module">
-                                    <a class="btn btn--sm type--uppercase" href="signup.html"> <span class="btn__text">SIGN UP</span> </a>
-                                    <a class="btn btn--sm btn--primary type--uppercase" href="signin.html"> <span class="btn__text">
+                                    <a class="btn btn--sm type--uppercase" href="signup.html" id="signUpButton"> <span class="btn__text">SIGN UP</span> </a>
+                                    <a class="btn btn--sm btn--primary type--uppercase" href="signin.html" id="signInButton"> <span class="btn__text">
                                 SIGN IN</span> </a>
                                 </div>
                             </div>
@@ -80,22 +80,23 @@
                             </h2>
                         </p>
                         <br>
-                        
-                           
 
-                            <div>
-                                <input type="text" name="start" id="start" />
-                                <label for="start">Start Date</label>
-                            </div>
-                            <div>
-                                <input type="text" name="end" id="end" />
-                                <label for="end">Explation Date</label>
-                            </div>
-                            <div class="row justify-content-center">
-                                <a class="btn" href="#" id="createElectionBtn">
-                                    <span class="btn__text">Create Election</span>
-                                </a>
-                                </div>  </div>
+
+
+                        <div>
+                            <input type="text" name="start" id="start" />
+                            <label for="start">Start Date</label>
+                        </div>
+                        <div>
+                            <input type="text" name="end" id="end" />
+                            <label for="end">Explation Date</label>
+                        </div>
+                        <div class="row justify-content-center">
+                            <a class="btn" href="#" id="createElectionBtn">
+                                <span class="btn__text">Create Election</span>
+                            </a>
+                        </div>
+                    </div>
 
 
 
@@ -120,16 +121,13 @@
 
                                 <form class="text-left form-email row mx-0" id="add-candidate" method="POST">
                                     <div class="col-12">
-                                        <h5>First Name</h5><input id="firstName" type="text" name="First Name"
-                                            placeholder="First Name" required autocomplete="off">
+                                        <h5>First Name</h5><input id="firstName" type="text" name="First Name" placeholder="First Name" required autocomplete="off">
                                     </div>
                                     <div class="col-12">
-                                        <h5>Last Name</h5><input id="lastName" type="text" name="Last Name"
-                                            placeholder="Last Name" required autocomplete="off">
+                                        <h5>Last Name</h5><input id="lastName" type="text" name="Last Name" placeholder="Last Name" required autocomplete="off">
                                     </div>
                                     <div class="col-12">
                                         <h5>Date of Birth</h5>
-                                        <script src="date.js"></script>
                                         <input id='birthDate' type="date" name="Date of Birth" required>
 
 
@@ -140,32 +138,28 @@
                                             <div class="col-4 text-center">
                                                 <div class="input-radio">
                                                     <span>Male</span>
-                                                    <input type="radio" name="frequency" value="Male"
-                                                        class="validate-required" id="gender-input-assigned-1">
+                                                    <input type="radio" name="frequency" value="Male" class="validate-required" id="gender-input-assigned-1">
                                                     <label for="gender-input-assigned-1"></label>
                                                 </div>
                                             </div>
                                             <div class="col-4 text-center">
                                                 <div class="input-radio">
                                                     <span>Female</span>
-                                                    <input type="radio" name="frequency" value="Female"
-                                                        class="validate-required" id="gender-input-assigned-2">
+                                                    <input type="radio" name="frequency" value="Female" class="validate-required" id="gender-input-assigned-2">
                                                     <label for="gender-input-assigned-2"></label>
                                                 </div>
                                             </div>
                                             <div class="col-4 text-center">
                                                 <div class="input-radio">
                                                     <span>Other</span>
-                                                    <input type="radio" name="frequency" value="Other"
-                                                        class="validate-required" id="gender-input-assigned-3">
+                                                    <input type="radio" name="frequency" value="Other" class="validate-required" id="gender-input-assigned-3">
                                                     <label for="gender-input-assigned-3"></label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <h5>E-Mail</h5><input id="email" type="email" name="Email Address"
-                                            placeholder="Email Address" required autocomplete="off">
+                                        <h5>E-Mail</h5><input id="email" type="email" name="Email Address" placeholder="Email Address" required autocomplete="off">
                                     </div>
                                     <div class="col-md-6"> <label>Choose a photo:</label> <input type="file" id="candPhoto" name="candidate-photo"> </div>
                                     <div class="col-md-12"> <label>Description:</label> <textarea rows="6" id="candDesc" name="candidate-description" class="validate-required" required autocomplete="off"></textarea> </div>
@@ -180,7 +174,7 @@
                     </div>
 
         </section>
-       
+
 
         </div>
         <footer class="text-center-xs space--xs">
@@ -209,12 +203,12 @@
             </div>
         </footer>
         </div>
-        
+
         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
         <script src="js/parallax.js"></script>
         <script src="js/smooth-scroll.min.js"></script>
         <script src="js/scripts.js"></script>
-       
+
         <script>
             var modal = document.getElementById('myModal');
             // Kipi açan düğmeyi al
