@@ -119,7 +119,54 @@
                             <div class="col-md-8 col-lg-7">
 
                                 <form class="text-left form-email row mx-0" id="add-candidate" method="POST">
-                                    <div class="col-md-6"> <label>Candidate Name:</label> <input type="text" id="candName" name="Candidate Name" class="validate-required" required autocomplete="off"> </div>
+                                    <div class="col-12">
+                                        <h5>First Name</h5><input id="firstName" type="text" name="First Name"
+                                            placeholder="First Name" required autocomplete="off">
+                                    </div>
+                                    <div class="col-12">
+                                        <h5>Last Name</h5><input id="lastName" type="text" name="Last Name"
+                                            placeholder="Last Name" required autocomplete="off">
+                                    </div>
+                                    <div class="col-12">
+                                        <h5>Date of Birth</h5>
+                                        <script src="date.js"></script>
+                                        <input id='birthDate' type="date" name="Date of Birth" required>
+
+
+                                    </div>
+                                    <div class="col-12">
+                                        <h5>Gender</h5>
+                                        <div class="boxed bg--secondary boxed--border row">
+                                            <div class="col-4 text-center">
+                                                <div class="input-radio">
+                                                    <span>Male</span>
+                                                    <input type="radio" name="frequency" value="Male"
+                                                        class="validate-required" id="gender-input-assigned-1">
+                                                    <label for="gender-input-assigned-1"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 text-center">
+                                                <div class="input-radio">
+                                                    <span>Female</span>
+                                                    <input type="radio" name="frequency" value="Female"
+                                                        class="validate-required" id="gender-input-assigned-2">
+                                                    <label for="gender-input-assigned-2"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 text-center">
+                                                <div class="input-radio">
+                                                    <span>Other</span>
+                                                    <input type="radio" name="frequency" value="Other"
+                                                        class="validate-required" id="gender-input-assigned-3">
+                                                    <label for="gender-input-assigned-3"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <h5>E-Mail</h5><input id="email" type="email" name="Email Address"
+                                            placeholder="Email Address" required autocomplete="off">
+                                    </div>
                                     <div class="col-md-6"> <label>Choose a photo:</label> <input type="file" id="candPhoto" name="candidate-photo"> </div>
                                     <div class="col-md-12"> <label>Description:</label> <textarea rows="6" id="candDesc" name="candidate-description" class="validate-required" required autocomplete="off"></textarea> </div>
 

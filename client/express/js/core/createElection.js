@@ -87,7 +87,7 @@ $(document).ready(() => {
             model.election.capacity = 100;
             model.userId=localStorage.getItem("id");
             console.log(model);
-
+            
             for (let i of candidates) {
                 model.election.candidates.push({
                     candidateName: i.candidateName,

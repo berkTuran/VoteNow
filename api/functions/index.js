@@ -29,15 +29,27 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
     election['owner'] = userId
     let electionRef = admin.firestore().collection('elections').doc()
     electionRef.set(election).then(res => {
+        let promises = []
+        election.candidates.forEach(candidate => {
+            promises.push(addCandidate(electionRef.id, candidate));
+        });
+
         let userRef = admin.firestore().collection('users').doc(userId)
         userRef.get().then(document => {
             let user = document.data()
             if (user.elections == undefined) {
                 userRef.update({elections: [electionRef.id]}).then(response => {
-                    res.json({result: response})
+                    Promise.all(promises).then(responses => {
+                        res.json({result: true})
+                    })
                 })
             }else {
-                let allElections = user.elections.push(electionRef.id)
+                Promise.all(promises).then(responses => {
+                    let allElections = user.elections.push(electionRef.id)
+                    userRef.update({elections: allElections}).then(response => {
+                    res.json({result: response})
+                })
+                })
             }
         })
     }).catch(err => {
@@ -142,6 +154,7 @@ function getElection(electionId) {
                 var election = snapshot.data()
                 election.candidates = []
                 snapshot.data().candidates.forEach(e => {
+                    console.log(e)
                     admin.firestore().collection('users').doc(e).get().then(snapshot => {
                         let candidate = snapshot.data()
                         election.candidates.push(candidate)
@@ -150,6 +163,38 @@ function getElection(electionId) {
                 res.json({response: election})
             });
     });
+}
+
+function addCandidate(electionId, candidate) {
+    return new Promise((resolve, reject) => {
+        const electionParameters = {
+            electionId: electionId,
+            candidate: {
+                candidateName: candidate.candidateName,
+                bio: candidate.bio,
+                profileImageUrl: candidate.profileImageUrl
+            }
+        }
+        let userJSON = {
+            firstName: electionParameters.candidate.firstName,
+            lastName: electionParameters.candidate.lastName,
+            email: electionParameters.candidate.email,
+            createdAt: new Date(),
+            birthDate: electionParameters.candidate.birthDate,
+            gender: electionParameters.candidate.gender,
+            bio: electionParameters.candidate.bio,
+            profileImageUrl: electionParameters.candidate.profileImageUrl,
+            userType: "Candidate"
+        }
+        let parameters = {email: userJSON.email, password: uuid.v4()}
+        admin.auth().createUser(parameters).then(registeredUser => {
+            admin.firestore().collection('elections').doc(electionParameters.electionId).collection('candidates').doc(registeredUser.uid).set(userJSON).then(response => {
+                resolve({result: response, authKeys: {email: parameters.email, password: parameters.password}});
+            }).catch(error => {
+                reject(error);
+            });
+        })
+    })
 }
 
 exports.getElection = functions.https.onRequest(async (req, res) => {
@@ -309,7 +354,7 @@ exports.signIn = functions.https.onRequest(async (req, res) => {
     FirebaseAuth.default.auth().signInWithEmailAndPassword(authTokens.email, authTokens.password).then(response => {
         res.json({result: response, error: null});
     }).catch(error => {
-        res.json(error);
+        res.json({error: error});
     });
     });
 });
