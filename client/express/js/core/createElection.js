@@ -88,6 +88,7 @@ $(document).ready(() => {
             model.electionDiscription = $("#elecDesc").val();
             model.startDate = $("#start").val();
             model.endDate = $("#end").val();
+            model.currentID = localStorage.getItem("id");
             model.candidates = [];
             model.capacity = 100;
             console.log(model);
