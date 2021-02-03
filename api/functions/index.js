@@ -45,7 +45,7 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
                     responses.forEach(response => {
                         authKeys.push(response.authKeys)
                     })
-                    res.json({result: response})
+                    res.json({result: authKeys})
                     })
                 })
             }else {
@@ -55,7 +55,7 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
                     responses.forEach(response => {
                         authKeys.push(response)
                     })
-                    res.json({result: response})
+                    res.json({result: authKeys})
                 });
                 })
             }
@@ -347,7 +347,7 @@ exports.signUp = functions.https.onRequest(async (req, res) => {
 
 exports.signIn = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
-        res.header('Access-Control-Allow-Origin', "*");     // TODO - Make this more secure!!
+        res.header('Access-Control-Allow-Origin', "*");
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
         res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
       let authTokens = {
@@ -361,6 +361,18 @@ exports.signIn = functions.https.onRequest(async (req, res) => {
     });
     });
 });
+
+exports.resetPassword = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        res.header('Access-Control-Allow-Origin', "*");
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+        res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+        let email = req.body.email
+        FirebaseAuth.default.auth().sendPasswordResetEmail(email).then(response => {
+            res.json({result: response})
+        });
+    });
+})
 
 exports.createSurvey = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
