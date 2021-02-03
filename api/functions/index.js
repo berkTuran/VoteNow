@@ -101,18 +101,22 @@ exports.createSurvey = functions.https.onRequest(async (req, res) => {
 
 exports.getAllSurveys = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
-        admin.firestore().collection('surveys').get().then(snapshot => {
-            var surveys = [];
-            snapshot.forEach(e => {
-                surveys.push({
-                    id: e.id,
-                    data: e.data()
-                });
-            });
-            res.json({result: survey, error: null});
-        }).catch(error => {
-            res.json({error: error});
-        });
+            var status = req.body.status
+            admin.firestore().collection('surveys').get().then(snapshot => {   
+                var surveys = [];
+                var promises = []
+                snapshot.forEach(e => {  
+                    promises.push(getSurvey(e.id))
+                    });
+                    Promise.all(promises).then(responses => {
+                        responses.forEach(survey => {
+                            if (survey.isOpen != undefined && (survey.isOpen.toString() == status.toString())) {
+                                surveys.push(survey);
+                            }
+                        })
+                        res.json({result: surveys, error: null});
+                    })
+                });            
     });
 });
 
@@ -199,6 +203,18 @@ function getElection(electionId) {
                     resolve(election)
                 })
                 
+            });
+    });
+}
+
+function getSurvey(surveyId) {
+    return new Promise((resolve, reject) => {
+        let reference = admin.firestore().collection('surveys').doc(surveyId);
+        reference.get()
+            .then(snapshot => {
+                var survey = snapshot.data()
+                survey['id'] = snapshot.id
+                resolve(survey)
             });
     });
 }
@@ -503,7 +519,7 @@ exports.updateElectionStatus = functions.https.onRequest(async (req, res) => {
 exports.getStats = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
         getStats(req.body.electionId).then(response => {
-            res.json(response)
+            res.json(Object.values(response))
         });
     });  
 });
@@ -562,6 +578,7 @@ function getStats(electionId) {
                     results[vote.preferedCandidateId].voteCount++
                 }
             });
+            results['electionId'] = electionId
             resolve(results)
         }).catch(error => {
             reject(error)

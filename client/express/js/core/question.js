@@ -1,26 +1,24 @@
-
-
 const btnAdd = document.querySelector('#btnAdd');
 const btnRemove = document.querySelector('#btnRemove');
-const sb = document.querySelector('#list');
-const name= $ ("input#surveyName").val();
+const sb = document.querySelector('#answerList');
+const answer = document.querySelector('#answer');
 
 btnAdd.onclick = (e) => {
     e.preventDefault();
 
     // validate the option
-    if (name.value == '') {
+    if (answer.value == '') {
         alert('Please enter the name.');
         return;
     }
     // create a new option
-    const option = new Option(name.value, name.value);
+    const option = new Option(answer.value, answer.value);
     // add it to the list
     sb.add(option, undefined);
 
     // reset the value of the input
-    name.value = '';
-    name.onfocus();
+    answer.value = '';
+    answer.focus();
 };
 
 // remove selected option
