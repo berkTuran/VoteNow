@@ -25,8 +25,7 @@
                             <a href="index.html"> <img alt="Image" src="img/additionalPics/logo.png"></a>
                         </div>
                         <div class="col-9 col-md-10 text-right">
-                            <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i
-                                    class="icon icon--sm stack-interface stack-menu"></i> </a>
+                            <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i class="icon icon--sm stack-interface stack-menu"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -51,10 +50,8 @@
                                 </ul>
                             </div>
                             <div class="bar__module">
-                                <a class="btn btn--sm type--uppercase" href="signup.html" id="signUpButton"> <span
-                                        class="btn__text">SIGN UP</span> </a>
-                                <a class="btn btn--sm btn--primary type--uppercase" href="signin.html"
-                                    id="signInButton"> <span class="btn__text">
+                                <a class="btn btn--sm type--uppercase" href="signup.html" id="signUpButton"> <span class="btn__text">SIGN UP</span> </a>
+                                <a class="btn btn--sm btn--primary type--uppercase" href="signin.html" id="signInButton"> <span class="btn__text">
                                         sIGN IN</span> </a>
                             </div>
                         </div>
@@ -69,9 +66,7 @@
                 <div class="row">
                     <div class="col-md-10 col-lg-8">
                         <h1><b>VoteNow's Online Voting Methods and Process</b><br></h1>
-                        <p class="lead"> VoteNow election setup is straightforward and fast, and voting and sharing
-                            results is just as easy. But don't let the friendly name fool you; VoteNow can handle
-                            complex ballots and voting needs too! </p>
+                        <p class="lead"> VoteNow election setup is straightforward and fast, and voting and sharing results is just as easy. But don't let the friendly name fool you; VoteNow can handle complex ballots and voting needs too! </p>
                     </div>
                 </div>
             </div>
@@ -83,29 +78,23 @@
                         <div class="process-1">
                             <div class="process__item">
                                 <h4><b>Step 1: Setup</b><br></h4>
-                                <p><b>Add election details<br></b>Enter your election name, dates and
-                                    settings<br><br><b>Design your ballot and notices<br></b>Add positions, candidates
-                                    and questions with photos and bios and personalize the email, text and paper
-                                    notices<br><br><b>Add your voter list<br></b></p>
+                                <p><b>Add election details<br></b>Enter your election name, dates and settings
+                                    <br><br><b>Design your ballot and notices<br></b>Add positions, candidates and questions with photos and bios and personalize the email, text and paper notices
+                                    <br><br><b>Add your voter list<br></b></p>
                                 <article>Pull lists from Excel or your contact manager</article>
                             </div>
                             <div class="process__item">
                                 <h4><b>Step 2: Vote</b><br></h4>
                                 <p><b>
-                                        One vote per voter the way they want to vote<br></b>Voters are notified by
-                                    email, text message, mail or any way you want. Voters click to vote on their
-                                    computer or phone.<br><br><b>Voting is anonymous<br></b>Choices are confidential and
-                                    can't be seen by other voters<br><br><b>Increase turnout and monitor
+                                        One vote per voter the way they want to vote<br></b>Voters are notified by email, text message, mail or any way you want. Voters click to vote on their computer or phone.<br><br><b>Voting is anonymous<br></b>Choices
+                                    are confidential and can't be seen by other voters<br><br><b>Increase turnout and monitor
                                         receipt<br></b>Send reminders and resend bounced notices </p>
                             </div>
                             <div class="process__item">
                                 <h4><b>Step 3: Results</b><br></h4>
                                 <p><b>
-                                        Results are automatically tabulated<br></b>View voter summaries, graphs and vote
-                                    by vote results<br><br><b>Select the winner<br></b>Winners are automatically picked
-                                    or tabulate the results yourself<br><br><b>Share the results<br></b>Automatically
-                                    notify each voter and publish the results to your webpage. Or keep them private -
-                                    it's up to you! </p>
+                                        Results are automatically tabulated<br></b>View voter summaries, graphs and vote by vote results<br><br><b>Select the winner<br></b>Winners are automatically picked or tabulate the results yourself<br><br><b>Share the results<br></b>Automatically
+                                    notify each voter and publish the results to your webpage. Or keep them private - it's up to you! </p>
                             </div>
                         </div>
                     </div>
@@ -133,16 +122,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-7"> <span class="type--fine-print">© <span class="update-year"></span> VoteNow
-                            Inc.</span> <a class="type--fine-print" href="#">Privacy Policy</a> <a
-                            class="type--fine-print" href="#">Legal</a> </div>
-                    <div class="col-sm-5 text-right text-center-xs"> <a class="type--fine-print"
-                            href="#">support@VoteNow.io</a> </div>
+                    <div class="col-sm-7"> <span class="type--fine-print">© <span class="update-year"></span> VoteNow Inc.
+                        </span> <a class="type--fine-print" href="#">Privacy Policy</a> <a class="type--fine-print" href="#">Legal</a> </div>
+                    <div class="col-sm-5 text-right text-center-xs"> <a class="type--fine-print" href="#">support@VoteNow.io</a> </div>
                 </div>
             </div>
         </footer>
     </div>
-    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="js/parallax.js"></script>
     <script src="js/smooth-scroll.min.js"></script>
     <script src="js/scripts.js"></script>
@@ -151,7 +138,7 @@
             $("a#signUpButton .btn__text").text("PROFILE");
             $("a#signInButton .btn__text").text("SIGN OUT");
         }
-        $("#signInButton").click(async () => {
+        $("#signInButton").click(async() => {
             if (localStorage.getItem("id") != null) {
                 localStorage.clear();
                 location.href = "/signin.html";

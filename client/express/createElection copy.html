@@ -16,100 +16,114 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
         <link href="css/modal.css" rel="stylesheet" type="text/css" media="all" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
-        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="js/core/isSignedIn.js"></script>
         <script src="js/core/createElection.js"></script>
 
-        
-    <style>
-        html, body {
-        min-height: 100%;
-        padding: 0;
-        margin: 0;
-        font-family: Roboto, Arial, sans-serif;
-        font-size: 14px;
-        color: #666;
-        }
-        h1 {
-        margin: 0 0 20px;
-        font-weight: 400;
-        color: #555555;
-        }
-        p {
-        margin: 0 0 5px;
-        }
-        .main-block {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: #00000017;
-        width: 3500px;
-        
-        }
-        form {
-        padding: 25px;
-        margin: 25px;
-        box-shadow: 0 2px 5px #f5f5f5; 
-        background: #f5f5f5; 
-        
-        }
-        .fas {
-        margin: 25px 10px 0;
-        font-size: 72px;
-        color: #fff;
-        }
-        .fa-envelope {
-        transform: rotate(-20deg);
-        }
-        .fa-at , .fa-mail-bulk{
-        transform: rotate(10deg);
-        }
-        input, textarea {
-        width: calc(100% - 18px);
-        padding: 8px;
-        margin-bottom: 20px;
-        border: 1px solid #8d9194;
-        outline: none;
-        }
-        input::placeholder {
-        color: #666;
-        }
-        button {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        background: #666; 
-        font-size: 16px;
-        font-weight: 400;
-        color: #fff;
-        width: 150px;
-        }
-        button:hover {
-        background: #666;
-        }    
-        @media (min-width: 568px) {
-        .main-block {
-        flex-direction: row;
-        }
-        .left-part, form {
-        width: 50%;
-        }
-        .fa-envelope {
-        margin-top: 0;
-        margin-left: 20%;
-        }
-        .fa-at {
-        margin-top: -10%;
-        margin-left: 65%;
-        }
-        .fa-mail-bulk {
-        margin-top: 2%;
-        margin-left: 28%;
-        }
-        }
-      </style>
+
+        <style>
+            html,
+            body {
+                min-height: 100%;
+                padding: 0;
+                margin: 0;
+                font-family: Roboto, Arial, sans-serif;
+                font-size: 14px;
+                color: #666;
+            }
+            
+            h1 {
+                margin: 0 0 20px;
+                font-weight: 400;
+                color: #555555;
+            }
+            
+            p {
+                margin: 0 0 5px;
+            }
+            
+            .main-block {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: #00000017;
+                width: 3500px;
+            }
+            
+            form {
+                padding: 25px;
+                margin: 25px;
+                box-shadow: 0 2px 5px #f5f5f5;
+                background: #f5f5f5;
+            }
+            
+            .fas {
+                margin: 25px 10px 0;
+                font-size: 72px;
+                color: #fff;
+            }
+            
+            .fa-envelope {
+                transform: rotate(-20deg);
+            }
+            
+            .fa-at,
+            .fa-mail-bulk {
+                transform: rotate(10deg);
+            }
+            
+            input,
+            textarea {
+                width: calc(100% - 18px);
+                padding: 8px;
+                margin-bottom: 20px;
+                border: 1px solid #8d9194;
+                outline: none;
+            }
+            
+            input::placeholder {
+                color: #666;
+            }
+            
+            button {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                background: #666;
+                font-size: 16px;
+                font-weight: 400;
+                color: #fff;
+                width: 150px;
+            }
+            
+            button:hover {
+                background: #666;
+            }
+            
+            @media (min-width: 568px) {
+                .main-block {
+                    flex-direction: row;
+                }
+                .left-part,
+                form {
+                    width: 50%;
+                }
+                .fa-envelope {
+                    margin-top: 0;
+                    margin-left: 20%;
+                }
+                .fa-at {
+                    margin-top: -10%;
+                    margin-left: 65%;
+                }
+                .fa-mail-bulk {
+                    margin-top: 2%;
+                    margin-left: 28%;
+                }
+            }
+        </style>
     </head>
 
     <body data-smooth-scroll-offset="77">
@@ -121,8 +135,7 @@
                             <a href="index.html"> <img alt="Image" src="img/additionalPics/logo.png"></a>
                         </div>
                         <div class="col-9 col-md-10 text-right">
-                            <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i
-                                    class="icon icon--sm stack-interface stack-menu"></i> </a>
+                            <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i class="icon icon--sm stack-interface stack-menu"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -135,141 +148,141 @@
                                 <a href="index.html"> <img alt="Image" src="img/additionalPics/logo.png"> </a>
                             </div>
                         </div>
-                            <div class="col-lg-11 text-right text-left-xs text-left-sm col-md-11">
-                                <div class="bar__module">
-                                    <ul class="menu-horizontal text-left">
-                                        <li> <a href="surveys.html">Election & Survey <br></a> </li>
-                                        <li> <a href="howItWorks.html"> How ıt works</a> </li>
-                                        <li> <a href="#">
+                        <div class="col-lg-11 text-right text-left-xs text-left-sm col-md-11">
+                            <div class="bar__module">
+                                <ul class="menu-horizontal text-left">
+                                    <li> <a href="surveys.html">Election & Survey <br></a> </li>
+                                    <li> <a href="howItWorks.html"> How ıt works</a> </li>
+                                    <li> <a href="#">
                                     Pricing</a> </li>
-                                    </ul>
-                                </div>
-                                <div class="bar__module">
-                                    <a class="btn btn--sm type--uppercase" href="signup.html"> <span class="btn__text">SIGN UP</span> </a>
-                                    <a class="btn btn--sm btn--primary type--uppercase" href="signin.html"> <span class="btn__text">
+                                </ul>
+                            </div>
+                            <div class="bar__module">
+                                <a class="btn btn--sm type--uppercase" href="signup.html"> <span class="btn__text">SIGN UP</span> </a>
+                                <a class="btn btn--sm btn--primary type--uppercase" href="signin.html"> <span class="btn__text">
                                 SIGN IN</span> </a>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </nav>
-            </div>
+                </div>
+            </nav>
+        </div>
         </div>
 
         <section class="text-center">
             <div class="container">
                 <div class="row">
-    <div class="main-block" >
-      <div class="left-part">
-      </div>
-      <form action="/">
-        <h1>Create Election</h1>
-            <br>
-                <br>
-                <h2>
-                    <div class="col-md-10"> <label>Election Name</label> <input id="elecName" input type="text" name="Election Name" class="validate-required" required autocomplete="off"> </div>
-                </h2>
-                <br>
-                <p class="lead">
-                    <h2>
-                        <div class="col-md-10"> <label>Election Description</label> <textarea rows="6" id="elecDesc" name="election-description" class="validate-required" required autocomplete="off"></textarea> </div>
-                    </h2>
-                </p>
-                <br>
-                <div>
-                    <input type="text" name="start" id="start" />
-                    <label for="start">Start Date</label>
-                </div>
-                <div>
-                    <input type="text" name="end" id="end" />
-                    <label for="end">Explation Date</label>
-                </div>
-                <div class="row justify-content-center">
-                    <a class="btn" href="#" id="createElectionBtn">
-                        <span class="btn__text">Create Election</span>
-                    </a>
-                </div>
-            
-       
-                <button id="myBtn">Add Candidate</button>
-                <div id="myModal" class="modal">
-
-
-
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <span class="close">&times;</span>
-                            <br>
-                            <h1>Add Candidate</h1>
-                            <br>
-                            <br>
-
+                    <div class="main-block">
+                        <div class="left-part">
                         </div>
-                        <div class="col-md-8 col-lg-7">
+                        <form action="/">
+                            <h1>Create Election</h1>
+                            <br>
+                            <br>
+                            <h2>
+                                <div class="col-md-10"> <label>Election Name</label> <input id="elecName" input type="text" name="Election Name" class="validate-required" required autocomplete="off"> </div>
+                            </h2>
+                            <br>
+                            <p class="lead">
+                                <h2>
+                                    <div class="col-md-10"> <label>Election Description</label> <textarea rows="6" id="elecDesc" name="election-description" class="validate-required" required autocomplete="off"></textarea> </div>
+                                </h2>
+                            </p>
+                            <br>
+                            <div>
+                                <input type="text" name="start" id="start" />
+                                <label for="start">Start Date</label>
+                            </div>
+                            <div>
+                                <input type="text" name="end" id="end" />
+                                <label for="end">Explation Date</label>
+                            </div>
+                            <div class="row justify-content-center">
+                                <a class="btn" href="#" id="createElectionBtn">
+                                    <span class="btn__text">Create Election</span>
+                                </a>
+                            </div>
 
-                            <form class="text-left form-email row mx-0" id="add-candidate" method="POST">
-                                <div class="col-12">
-                                    <h5>First Name</h5><input id="firstName" type="text" name="First Name" placeholder="First Name" required autocomplete="off">
-                                </div>
-                                <div class="col-12">
-                                    <h5>Last Name</h5><input id="lastName" type="text" name="Last Name" placeholder="Last Name" required autocomplete="off">
-                                </div>
-                                <div class="col-12">
-                                    <h5>Date of Birth</h5>
-                                    
-                                    <input id='birthDate' type="date" name="Date of Birth" required>
-                                    
-                                </div>
-                                <div class="col-12">
-                                    <h5>Gender</h5>
-                                    <div class="boxed bg--secondary boxed--border row">
-                                        <div class="col-4 text-center">
-                                            <div class="input-radio">
-                                                <span>Male</span>
-                                                <input type="radio" name="frequency" value="Male" class="validate-required" id="gender-input-assigned-1">
-                                                <label for="gender-input-assigned-1"></label>
+
+                            <button id="myBtn">Add Candidate</button>
+                            <div id="myModal" class="modal">
+
+
+
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <span class="close">&times;</span>
+                                        <br>
+                                        <h1>Add Candidate</h1>
+                                        <br>
+                                        <br>
+
+                                    </div>
+                                    <div class="col-md-8 col-lg-7">
+
+                                        <form class="text-left form-email row mx-0" id="add-candidate" method="POST">
+                                            <div class="col-12">
+                                                <h5>First Name</h5><input id="firstName" type="text" name="First Name" placeholder="First Name" required autocomplete="off">
                                             </div>
-                                        </div>
-                                        <div class="col-4 text-center">
-                                            <div class="input-radio">
-                                                <span>Female</span>
-                                                <input type="radio" name="frequency" value="Female" class="validate-required" id="gender-input-assigned-2">
-                                                <label for="gender-input-assigned-2"></label>
+                                            <div class="col-12">
+                                                <h5>Last Name</h5><input id="lastName" type="text" name="Last Name" placeholder="Last Name" required autocomplete="off">
                                             </div>
-                                        </div>
-                                        <div class="col-4 text-center">
-                                            <div class="input-radio">
-                                                <span>Other</span>
-                                                <input type="radio" name="frequency" value="Other" class="validate-required" id="gender-input-assigned-3">
-                                                <label for="gender-input-assigned-3"></label>
+                                            <div class="col-12">
+                                                <h5>Date of Birth</h5>
+
+                                                <input id='birthDate' type="date" name="Date of Birth" required>
+
                                             </div>
-                                        </div>
+                                            <div class="col-12">
+                                                <h5>Gender</h5>
+                                                <div class="boxed bg--secondary boxed--border row">
+                                                    <div class="col-4 text-center">
+                                                        <div class="input-radio">
+                                                            <span>Male</span>
+                                                            <input type="radio" name="frequency" value="Male" class="validate-required" id="gender-input-assigned-1">
+                                                            <label for="gender-input-assigned-1"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <div class="input-radio">
+                                                            <span>Female</span>
+                                                            <input type="radio" name="frequency" value="Female" class="validate-required" id="gender-input-assigned-2">
+                                                            <label for="gender-input-assigned-2"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <div class="input-radio">
+                                                            <span>Other</span>
+                                                            <input type="radio" name="frequency" value="Other" class="validate-required" id="gender-input-assigned-3">
+                                                            <label for="gender-input-assigned-3"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <h5>E-Mail</h5><input id="email" type="email" name="Email Address" placeholder="Email Address" required autocomplete="off">
+                                            </div>
+                                            <div class="col-md-6"> <label>Choose a photo:</label> <input type="file" id="candPhoto" name="candidate-photo"> </div>
+                                            <div class="col-md-12"> <label>Description:</label> <textarea rows="6" id="candDesc" name="candidate-description" class="validate-required" required autocomplete="off"></textarea> </div>
+
+                                            <div class="col-md-5 col-lg-4"> <button id="create-candidate-button" type="button" class="btn btn--primary type--uppercase">CREATE CANDIDATE</button> </div>
+
+                                        </form>
+                                        <br>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <h5>E-Mail</h5><input id="email" type="email" name="Email Address" placeholder="Email Address" required autocomplete="off">
-                                </div>
-                                <div class="col-md-6"> <label>Choose a photo:</label> <input type="file" id="candPhoto" name="candidate-photo"> </div>
-                                <div class="col-md-12"> <label>Description:</label> <textarea rows="6" id="candDesc" name="candidate-description" class="validate-required" required autocomplete="off"></textarea> </div>
 
-                                <div class="col-md-5 col-lg-4"> <button id="create-candidate-button" type="button" class="btn btn--primary type--uppercase">CREATE CANDIDATE</button> </div>
-
-                            </form>
-                            <br>
-                        </div>
+                            </div>
+                        </form>
                     </div>
 
-                </div>
-      </form>
-    </div>
- 
 
 
 
 
 
         </section>
-       
+
 
         </div>
         <footer class="text-center-xs space--xs">
@@ -298,12 +311,12 @@
             </div>
         </footer>
         </div>
-        
+
         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
         <script src="js/parallax.js"></script>
         <script src="js/smooth-scroll.min.js"></script>
         <script src="js/scripts.js"></script>
-       
+
         <script>
             var modal = document.getElementById('myModal');
             // Kipi açan düğmeyi al
