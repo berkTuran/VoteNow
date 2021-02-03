@@ -157,7 +157,7 @@ function getElection(electionId) {
         reference.get()
             .then(snapshot => {
                 var election = snapshot.data()
-                
+                election['electionId'] = electionId
                 resolve(election)
             });
     });
