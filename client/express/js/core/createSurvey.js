@@ -36,17 +36,21 @@ $(document).ready(() => {
 
 
 
-
     $("#createSurveyBtn").click(async () => {
-        let model = {};
-        model.question = $("input#surveyQuestion").val();
+        let model = {}; 
         model.surveyName = $("input#surveyName").val();
-        model.surveyDesc = $("input#surveyDesc").val();
-        //  model.answer = $("input#answer").val(); -- ARRAYDE TUTULMALI AYRI FONKSİYON!!!!! + İÇİNDE EN AZ 2 SEÇENEK OLMALI ( ELECTİONDAKİ CANDİDATE GİBİ)
+        model.question = $("input#surveyQuestion").val();
+        model.desrciption = $("input#surveyDescription").val();
+        var optionValues = [];
+        $('select#answerList').each(function() {
+            optionValues.push($(this).val());
+        });
+        model.answers = optionValues
         model.startDate = $("input#startS").val();
         model.endDate = $("input#endS").val();
-
-         if (model.question === "" || model.surveyName === "" || model.surveyDesc === "" || model.startDate === "" || model.endDate === "") {
+        model.isOpen = true
+        console.log(model)
+        if (model.question === "" || model.surveyName === "" || model.desrciption === "" || model.startDate === "" || model.startDate === "" || model.answers === []) {
             alert("Required value can't be left blank.");
         } else {
             let result = await $.post("https://us-central1-votenow-e5dc8.cloudfunctions.net/createSurvey", model);
@@ -54,15 +58,24 @@ $(document).ready(() => {
             if (!!result.error.message) {
                 alert(result.error.message);
             } else {
-                alert("Register successful");
-                location.href = "/signin.html";
+                alert("Survey is created.");
+                location.href = "/surveyList.html";
             }
-
 
         }
 
-});
 
+
+    })
 }
+
+
+
+
+
+
+
+
+
 
 );
