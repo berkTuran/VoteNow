@@ -462,13 +462,19 @@ exports.updateElectionStatus = functions.https.onRequest(async (req, res) => {
             let endDate = stringToDate(election.endDate, "mm/dd/yyyy","/")
             let today = new Date()
             if (today>endDate) {
-                let promise = electionsRef.doc(document.id).update({isOpen: false})
+                let promise = finishElection(document.id)
                 promises.push(promise)
             }
         });
         Promise.all(promises).then(responses => {
             res.json(responses)
         })
+    });
+});
+
+exports.getStats = functions.https.onRequest(async (req, res) => {
+    getStats(req.body.electionId).then(response => {
+        res.json(response)
     });
 });
 
@@ -480,6 +486,29 @@ exports.finishElection = functions.https.onRequest(async (req, res) => {
 
 function finishElection(electionId) {
     return new Promise((resolve, reject) => {
+        getStats(electionId).then(response => {
+            let statsArray = Object.values(response);
+            var counter = 0  
+            var winner = {}
+            statsArray.forEach(element => {
+                 if (element.voteCount > counter) {
+                     counter = element.voteCount
+                 }
+            });
+            statsArray.forEach(element => {
+                if (element.voteCount = counter) {
+                    winner = element
+                }
+            });
+            let electionRef = admin.firestore().collection('elections').doc(electionId)
+            electionRef.update({isOpen: false, result: winner }).then(response => {
+                resolve(response)
+            })
+        })
+    });
+}
+function getStats(electionId) {
+    return new Promise((resolve, reject) => {
         let electionRef = admin.firestore().collection('elections').doc(electionId)
         electionRef.get().then(document => {
             let election = document.data()
@@ -487,10 +516,11 @@ function finishElection(electionId) {
             let votes = election.votes
             let results = {}
             let candidateIds = []
+            var count = 0
             votes.forEach(vote => {
                 if (results[vote.preferedCandidateId] == undefined) {
                     candidateIds.push(vote.preferedCandidateId)
-                    results[vote.preferedCandidateId] = {voteList:[], voteCount: 0}
+                    results[vote.preferedCandidateId] = {voteList:[], voteCount: 0, candidateId: vote.preferedCandidateId}
                     results[vote.preferedCandidateId].voteList.push(vote.voterId)
                     results[vote.preferedCandidateId].voteCount++
                 }else {
@@ -498,7 +528,6 @@ function finishElection(electionId) {
                     results[vote.preferedCandidateId].voteCount++
                 }
             });
-            
             resolve(results)
         });
     });
