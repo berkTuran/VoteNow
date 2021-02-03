@@ -1,8 +1,8 @@
 $(document).ready(() => {
     if (localStorage.getItem("id") == null) {
         location.href = "/signin.html";
-        
-          
+
+
     }
     var dateFormat = "mm/dd/yy",
         from = $("#startS")
@@ -33,6 +33,36 @@ $(document).ready(() => {
 
         return date;
     }
+
+
+
+
+    $("#createSurveyBtn").click(async () => {
+        let model = {};
+        model.question = $("input#surveyQuestion").val();
+        model.surveyName = $("input#surveyName").val();
+        model.surveyDesc = $("input#surveyDesc").val();
+        //  model.answer = $("input#answer").val(); -- ARRAYDE TUTULMALI AYRI FONKSİYON!!!!! + İÇİNDE EN AZ 2 SEÇENEK OLMALI ( ELECTİONDAKİ CANDİDATE GİBİ)
+        model.startDate = $("input#startS").val();
+        model.endDate = $("input#endS").val();
+
+         if (model.question === "" || model.surveyName === "" || model.surveyDesc === "" || model.startDate === "" || model.endDate === "") {
+            alert("Required value can't be left blank.");
+        } else {
+            let result = await $.post("https://us-central1-votenow-e5dc8.cloudfunctions.net/createSurvey", model);
+
+            if (!!result.error.message) {
+                alert(result.error.message);
+            } else {
+                alert("Register successful");
+                location.href = "/signin.html";
+            }
+
+
+        }
+
+});
+
 }
 
 );

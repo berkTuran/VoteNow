@@ -50,7 +50,7 @@ $(document).ready(() => {
 
         return date;
     }
-
+/*
     $("#candPhoto").on("change", (e) => {
         candidate.photo = {
             name: uuidv4(),
@@ -64,7 +64,7 @@ $(document).ready(() => {
                 candidate.photo.path = e;
             });
         });
-    });
+    });*/
 
     $("#create-candidate-button").on("click", () => {
         if ($("#firstName").val() !== "" &&
@@ -114,7 +114,7 @@ $(document).ready(() => {
                     birthDate: i.birthDate,
                     gender: i.gender,
                     bio: i.bio,
-                    profileImageUrl: i.photo.path,
+                    profileImageUrl:" ", //i.photo.path,
                 });
             }
 

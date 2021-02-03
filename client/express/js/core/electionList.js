@@ -11,13 +11,16 @@ $(document).ready(() => {
             <h5>${i.electionName}</h5><p>${i.electionDiscription}</p>
             
             <div id='vote-now'><a class="btn btn--primary" data-field='${i.electionId}'><span class="btn__text" data-field='${i.electionId}'>Vote Now</span></a></div></div>`);
-        }
+            console.log(i.electionId) }
     });
 
+    
     setTimeout(() => {
         $("div#vote-now").on("click", (e) => {
+            console.log($(e.target).attr("data-field")); 
             let id = $(e.target).attr("data-field");
-            console.log(id);
+            
+                
             localStorage.setItem("vote-election-id", id);
             location.href = "/vote.html";
         });

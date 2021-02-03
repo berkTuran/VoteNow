@@ -178,7 +178,10 @@
                <div class="d-flex flex-row">
        
                    <div class="container" style="width: 1000px">
-        
+                    <tr>
+                        <th scope="col"> <h4><b>QUESTION</b></h4></th>
+                        <th scope="col" > <textarea rows="4" id="surveyQuestion" name="survey-question" class="validate-required" required autocomplete="on" placeholder="Question"></textarea></th>
+                      </tr>
             
                     <tr>
                         <th scope="col"><h4><b>Survey Name</b></h4></th>
@@ -312,6 +315,7 @@
             );
         </script>
 
+        
         <script type="text/javascript">
             if (localStorage.getItem("id") != null) {
                 $("a#signUpButton .btn__text").text("PROFILE");
