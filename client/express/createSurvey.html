@@ -19,6 +19,96 @@
         <script src="js/jquery-3.1.1.min.js"></script>
         <script src="js/core/isSignedIn.js"></script>
 
+        <style>
+            html, body {
+            min-height: 100%;
+            padding: 0;
+            margin: 0;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            color: #666;
+            }
+            h1 {
+            margin: 0 0 20px;
+            font-weight: 400;
+            color: #555555;
+            }
+            p {
+            margin: 0 0 5px;
+            }
+            .main-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #00000017;
+            width: 3500px;
+            
+            }
+            form {
+            padding: 25px;
+            margin: 25px;
+            box-shadow: 0 2px 5px #f5f5f5; 
+            background: #f5f5f5; 
+            
+            }
+            .fas {
+            margin: 25px 10px 0;
+            font-size: 72px;
+            color: #fff;
+            }
+            .fa-envelope {
+            transform: rotate(-20deg);
+            }
+            .fa-at , .fa-mail-bulk{
+            transform: rotate(10deg);
+            }
+            input, textarea {
+            width: calc(100% - 18px);
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #8d9194;
+            outline: none;
+            }
+            input::placeholder {
+            color: #666;
+            }
+            button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #666; 
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+            width: 150px;
+            }
+            button:hover {
+            background: #666;
+            }    
+            @media (min-width: 568px) {
+            .main-block {
+            flex-direction: row;
+            }
+            .left-part, form {
+            width: 50%;
+            }
+            .fa-envelope {
+            margin-top: 0;
+            margin-left: 20%;
+            }
+            .fa-at {
+            margin-top: -10%;
+            margin-left: 65%;
+            }
+            .fa-mail-bulk {
+            margin-top: 2%;
+            margin-left: 28%;
+            }
+            }
+          </style>
+
 
     </head>
 
@@ -74,45 +164,48 @@
         <section class="text-center">
 
             <div class="container">
+                <div class="row">
+                  
+   
 
-                <div class="col-md-5">
+    <div class="main-block" >
+      <div class="left-part">
+      
+      </div>
+      <form action="/">
+        <h1>Create Survey</h1>
 
-
-
-                    <form id="survey-form">
-
-                     
-                        
-                   
-                 <div class="d-flex flex-column align-items-center" style="width: 100%">
-
-
-                    <div class="d-flex flex-row">
+               <div class="d-flex flex-row">
+       
+                   <div class="container" style="width: 1000px">
+        
             
-                        <div class="container" style="width: 1000px">
-                            <table class="table table-hover table-primary" >
-                  <tbody>
                     <tr>
                         <th scope="col"><h4><b>Survey Name</b></h4></th>
                         <th scope="col"> <input id="surveyName" input type="text" name="Survey Name" class="validate-required" required autocomplete="off" placeholder="Survey Name"> </th>
                       </tr>
-                    <tr>
+                      <tr>
                         <th scope="col"> <h4><b>Survey Description</b></h4></th>
                         <th scope="col" > <textarea rows="4" id="surveyDesc" name="survey-description" class="validate-required" required autocomplete="off" placeholder="Survey Description"></textarea></th>
                       </tr>
-                      <tr>
-                        <th scope="col"> <h4><b>Answer</b></h4></th>
-                        <th scope="col" > <input type="text" id="answer" placeholder="Enter an answer" autocomplete="off">
-                            <button id="btnAdd" class="btn btn--primary">Add Answer</button>
-                        </th>
-                      </tr>
-                      <tr>
-                        <th scope="col"><h4><b>Answer List:</b></h4></th>
-                        <th scope="col" >  <select id="list" name="list" multiple>
-                        </select>
-                        <button id="btnRemove" class="btn btn--primary">Remove Selected Answer</button></th>
-                      </tr>
-                      <tr>
+                 <tr>
+                   <th scope="col"> <h4><b>Answer</b></h4></th>
+                   <tr>
+                    <th scope="col"> <h4><b>Answer</b></h4></th>
+                    <th scope="col" > <input type="text" id="answer" placeholder="Enter an answer" autocomplete="off">
+                        <button id="btnAdd" class="btn btn-">Add Answer</button>
+                    </th>
+                  </tr> <br>
+                 </tr>
+                 <tr>
+                   <br> <th scope="col"><h4><b>Answer List:</b></h4></th>
+                    <th scope="col" >  <select id="list" name="list" multiple>
+                    </select> </th> <br> <th></th> </tr> <br>
+                    <button id="btnRemove" class="btn btn-">Remove Answer</button></th>
+                  </tr> <br>
+                 <tr>
+                     <br>
+                     <tr>
                         <th scope="col"> <h4><b>Start Date</b></h4></th>
                         <th scope="col" > <input type="text" name="startS" id="startS" /></th>
                       </tr>
@@ -120,21 +213,19 @@
                         <th scope="col"><h4><b>End Date</b></h4> </th>
                         <th scope="col" ><input type="text" name="endS" id="endS" /></th>
                       </tr>
-                      
-                  </tbody>
-                </table>
-            </form>
-            <a class="btn" href="#" id="createSurveyBtn">
-                <span class="btn__text">Create Survey</span>
-            </a>
-                     
-        </div>
-            </div>
-            </div>
-           
-           
-             </section>
+ 
+                <div class="row justify-content-center">
+                    <a class="btn" href="#" id="createSurveyBtn">
+                        <span class="btn__text">Create Survey</span>
+                    </a>
+                    </div>  
+       
+      </form>
+    </div>
+ 
 
+
+        </section>
 
         </section>
 
