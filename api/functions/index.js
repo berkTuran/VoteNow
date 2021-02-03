@@ -57,13 +57,31 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
                     })
                     res.json({result: authKeys})
                 });
-                })
+                }).catch(err => {
+                    res.json({error: err});
+                });
             }
-        })
+        }).catch(err => {
+            res.json({error: err});
+        });
     }).catch(err => {
         res.json({error: err});
     });
       });
+});
+
+exports.isEmailUsed = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        let email = req.body.email
+        console.log(email)
+        admin.auth().getUserByEmail(email.trim()).then(user => {
+            console.log(user)
+            res.json({result: true})
+        }).catch(error => {
+            console.log(error)
+            res.json({result: false})
+        });
+    })
 });
 
 exports.createSurvey = functions.https.onRequest(async (req, res) => {
