@@ -1,10 +1,10 @@
-
 // Required Modules
 const functions = require('firebase-functions');
 const cors = require('cors')({origin: true});
 const admin = require('firebase-admin');
 const FirebaseAuth = require('firebase');
 const uuid = require('uuid');
+const { ref } = require('firebase-functions/lib/providers/database');
 var firebaseConfig = {
     apiKey: "AIzaSyC8iVJRnPaTbAQb51nkMrDzx8G2iP5-ln8",
     authDomain: "votenow-e5dc8.firebaseapp.com",
@@ -154,11 +154,33 @@ exports.getAllUsers = functions.https.onRequest(async (req, res) => {
 function getElection(electionId) {
     return new Promise((resolve, reject) => {
         let reference = admin.firestore().collection('elections').doc(electionId);
+        let fooman = []
         reference.get()
             .then(snapshot => {
                 var election = snapshot.data()
                 election['electionId'] = electionId
-                resolve(election)
+                var counter = 0
+                var promises = []
+                election.candidates.forEach(candidate => {
+                    let prom = reference.collection('candidates').where("email", "==", candidate.email).get()
+                    promises.push(prom)
+                });    
+                Promise.all(promises).then(snapshot => {
+                    snapshot.forEach(document => {
+                        document.forEach(document2 => {
+                            let id = document2.id
+                        let foo = election.candidates[counter]
+                        foo['id'] = id
+                        election.candidates[counter] = foo
+                        fooman.push(election.candidates[counter])
+                        console.log(fooman[counter])
+                        counter += 1
+                        })
+                    })
+                    election.candidates = fooman
+                    resolve(election)
+                })
+                
             });
     });
 }
@@ -449,6 +471,36 @@ exports.updateElectionStatus = functions.https.onRequest(async (req, res) => {
         })
     });
 });
+
+exports.finishElection = functions.https.onRequest(async (req, res) => {
+    finishElection(req.body.electionId).then(response => {
+        res.json(response)
+    });
+});
+
+function finishElection(electionId) {
+    return new Promise((resolve, reject) => {
+        let electionRef = admin.firestore().collection('elections').doc(electionId)
+        electionRef.get().then(document => {
+            let election = document.data()
+            console.log("HERE")
+            let votes = election.votes
+            let results = {}
+            votes.forEach(vote => {
+                if (results[vote.preferedCandidateId] == undefined) {
+                    results[vote.preferedCandidateId] = []
+                    results[vote.preferedCandidateId].push(vote.voterId)
+                }else {
+                    results[vote.preferedCandidateId].push(vote.voterId)
+                }
+            });
+            resolve(results)
+            for(i = 0; i < results.length; i++) {
+
+            }
+        });
+    });
+}
 
 function stringToDate(_date,_format,_delimiter)
 {
