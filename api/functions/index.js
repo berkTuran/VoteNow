@@ -283,6 +283,16 @@ exports.getUser = functions.https.onRequest(async (req, res) => {
     })
 });
 
+exports.getCandidate = functions.https.onRequest(async (req, res) => {
+    cors(req, res, () => {
+        admin.firestore().collection('elections').doc(req.body.electionId).collection('candidates').doc(req.body.candidateId).get().then(candidate => {
+            res.json({result: candidate.data()});
+        }).catch(error => {
+            res.json(error)
+        })
+    })
+});
+
 exports.updateUser = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
         admin.firestore().collection('users').doc(req.body.userId).update(req.body.user).then(res => {
@@ -473,15 +483,21 @@ exports.updateElectionStatus = functions.https.onRequest(async (req, res) => {
 });
 
 exports.getStats = functions.https.onRequest(async (req, res) => {
-    getStats(req.body.electionId).then(response => {
-        res.json(response)
-    });
+    cors(req, res, () => {
+        getStats(req.body.electionId).then(response => {
+            res.json(response)
+        });
+    });  
 });
 
 exports.finishElection = functions.https.onRequest(async (req, res) => {
-    finishElection(req.body.electionId).then(response => {
-        res.json(response)
-    });
+    cors(req, res, () => {
+        finishElection(req.body.electionId).then(response => {
+            res.json(response)
+        }).catch(error => {
+            res.json({error: error})
+        })
+    });  
 });
 
 function finishElection(electionId) {
@@ -529,7 +545,9 @@ function getStats(electionId) {
                 }
             });
             resolve(results)
-        });
+        }).catch(error => {
+            reject(error)
+        })
     });
 }
 
