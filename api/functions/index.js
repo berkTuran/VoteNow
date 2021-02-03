@@ -27,6 +27,7 @@ exports.createElection = functions.https.onRequest(async (req, res) => {
     election['result'] = null;
     election['isOpen'] = true;
     election['owner'] = userId
+    election['votes'] = []
     let electionRef = admin.firestore().collection('elections').doc()
     electionRef.set(election).then(response => {
         let promises = []
@@ -299,6 +300,7 @@ exports.addCandidate = functions.https.onRequest(async (req, res) => {
         }
         let parameters = {email: userJSON.email, password: uuid.v4()}
         admin.auth().createUser(parameters).then(registeredUser => {
+            userJSON['candidateId'] = registeredUser.uid
             admin.firestore().collection('elections').doc(electionParameters.electionId).collection('candidates').doc(registeredUser.uid).set(userJSON).then(response => {
                 res.json({result: response,authKeys: {email: parameters.email, password: parameters.password} , error: null});
             }).catch(error => {
@@ -391,23 +393,28 @@ exports.addOption = functions.https.onRequest(async (req, res) => {
 exports.voteElection = functions.https.onRequest(async (req, res) => {
     cors(req, res, () => {
         const electionId = req.body.electionId;
-        const vote = req.body.vote;
-        vote['createdAt'] = new Date();
-        const voterListReference = admin.firestore().collection('elections').doc(electionId).collection('voterList').doc()
-        voterListReference.collection('voterList').get().then(response => {
-                var isVoted = false
-                response.forEach(voteObject => {
-                    if (voteObject.data().userId == vote.userId) {
-                        isVoted = true;
+        const candidateId = req.body.candidateId;
+        const userId = req.body.userId
+
+        const electionReference = admin.firestore().collection('elections').doc(electionId)
+        electionReference.get().then(document => {
+            let election = document.data();
+            let currentVotes = election.votes
+            if (currentVotes != undefined) {
+                currentVotes.forEach(vote => {
+                    if (vote.voterId == userId) {
+                        res.json({error: "User is voted already."})
                     }
                 });
-                if (!isVoted) {
-                    admin.firestore().collection('elections').doc(electionId).collection('voterList').doc().add(vote).then(response => {
-                        res.json({success: true, response: response});
-                    })
-                }else {
-                    res.json({success: false, error: "The user with"+ vote.userId + " was voted before"});
-                }
+                electionReference.update({votes: admin.firestore.FieldValue.arrayUnion({voterId: userId, preferedCandidateId: candidateId})}).then(response => {
+                    res.json({result: response})
+                })
+            }else {
+                electionReference.update({votes: admin.firestore.FieldValue.arrayUnion({voterId: userId, preferedCandidateId: candidateId})}).then(response => {
+                    res.json({result: response})
+                })
+            }
         })
+
     });
 });
