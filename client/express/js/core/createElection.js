@@ -1,6 +1,6 @@
 $(document).ready(() => {
     let candidates = [];
-    let uploadFile;
+    let candidate = {};
 
     if (localStorage.getItem("id") != null) {
         $("a#signUpButton .btn__text").text("PROFILE");
@@ -52,11 +52,21 @@ $(document).ready(() => {
     }
 
     $("#candPhoto").on("change", (e) => {
-        uploadFile = e.target.files[0];
+        candidate.photo = {
+            name: uuidv4(),
+            file: e.target.files[0],
+            path: null
+        };
+        var storageRef = firebase.storage().ref();
+        var pathRef = storageRef.child("/media/candidateImages/" + candidate.photo.name + e.target.files[0].name);
+        pathRef.put(e.target.files[0]).then(function() {
+            pathRef.getDownloadURL().then(y => {
+                candidate.photo.path = e;
+            });
+        });
     });
 
     $("#create-candidate-button").on("click", () => {
-
         if ($("#firstName").val() !== "" &&
             $("#lastName").val() !== "" &&
             $("#birthDate").val() !== "" &&
@@ -72,11 +82,7 @@ $(document).ready(() => {
                 birthDate: $("#birthDate").val(),
                 gender: $("input[name='frequency']:checked").val(),
                 bio: $("#candDesc").val(),
-                photo: {
-                    name: uuidv4(),
-                    file: uploadFile,
-                    path: null,
-                },
+                photo: candidate.photo,
             });
 
             $("#firstName").val("");
@@ -86,20 +92,6 @@ $(document).ready(() => {
             $("#email").val("");
             $("#candPhoto").val("");
             $("#candDesc").val("");
-        }
-    });
-
-    $("span.close").on("click", () => {
-        var storageRef = firebase.storage().ref();
-        if (candidates.length > 0) {
-            for (let i of candidates) {
-                var pathRef = storageRef.child("/media/candidateImages/" + uuidv4() + i.photo.file.name);
-                pathRef.put(i.photo.file).then(function() {
-                    pathRef.getDownloadURL().then(e => {
-                        i.photo.path = e;
-                    });
-                });
-            }
         }
     });
 
@@ -138,6 +130,8 @@ $(document).ready(() => {
                 alert("Election create was successful!");
                 location.href = "/electionList.html";
             }
+        } else if (candidates.length < 2) {
+            alert("To create an election, at least two candidate must be defined.");
         } else {
             alert("There is a problem with your election. Please check your information.");
         }
