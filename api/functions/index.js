@@ -486,18 +486,20 @@ function finishElection(electionId) {
             console.log("HERE")
             let votes = election.votes
             let results = {}
+            let candidateIds = []
             votes.forEach(vote => {
                 if (results[vote.preferedCandidateId] == undefined) {
-                    results[vote.preferedCandidateId] = []
-                    results[vote.preferedCandidateId].push(vote.voterId)
+                    candidateIds.push(vote.preferedCandidateId)
+                    results[vote.preferedCandidateId] = {voteList:[], voteCount: 0}
+                    results[vote.preferedCandidateId].voteList.push(vote.voterId)
+                    results[vote.preferedCandidateId].voteCount++
                 }else {
-                    results[vote.preferedCandidateId].push(vote.voterId)
+                    results[vote.preferedCandidateId].voteList.push(vote.voterId)
+                    results[vote.preferedCandidateId].voteCount++
                 }
             });
+            
             resolve(results)
-            for(i = 0; i < results.length; i++) {
-
-            }
         });
     });
 }
