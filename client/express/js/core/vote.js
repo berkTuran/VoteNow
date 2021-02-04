@@ -25,26 +25,35 @@ $(document).ready(() => {
                     <p style="text-align:center;"><img src="${candidate.profileImageUrl}"  width="200" height="200"> </img> </p>
                         <h2 style="text-align:center;">${candidate.firstName + " " + candidate.lastName}</h2>
                                 <p style="text-align:center;" >${candidate.bio}</p> 
-                    <div id='submit-button' data-field='${candidate.id}' style="text-align:center;"><a class="btn btn--primary" >
+                    <div id='submit-button' onClick="clickButton('${electionId}');"   data-field='${candidate.id}' style="text-align:center;"><a class="btn btn--primary" >
                         <span class="btn__text" >Vote Now</span></a></div></div>`);
 
             });
         });
 
-    setTimeout(() => {
-        $("#submit-button").click(async(e) => {
-            let model2 = {};
-            model2.electionId = electionId;
-            model2.userId = localStorage.getItem('id')
-            model2.candidateId = $("#submit-button").attr("data-field");
+    
 
-            let result = await $.post("https://us-central1-votenow-e5dc8.cloudfunctions.net/voteElection", model2);
-            if (!!result.error) {
-                alert(result.error);
-            } else {
-                alert("Vote Success!");
-                location.href = "/home.html";
-            }
-        });
-    }, 1000);
+
+    
+
+
+
 });
+
+
+async function clickButton(id) {
+    let model2 = {};
+    model2.electionId = id;
+    model2.userId = localStorage.getItem('id')
+    model2.candidateId = $("#submit-button").attr("data-field");
+
+    let result = await $.post("https://us-central1-votenow-e5dc8.cloudfunctions.net/voteElection", model2);
+    if (!!result.error) {
+        alert(result.error);
+    } else {
+        alert("Vote Success!");
+        location.href = "/home.html";
+    }
+
+
+}
